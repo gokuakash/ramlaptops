@@ -1,0 +1,61 @@
+Ramlaptops — Computers E-Commerce Hub
+=====================================
+
+Business: Ramlaptops (computers retailer + B2B wholesale), Bengaluru
+URL: https://ramlaptops.vercel.app
+Repo: https://github.com/gokuakash/ramlaptops
+Category: Technology / Computers & Laptops Retail
+Date: 2026-08-20
+Model: deepseek-v4-flash-free (opencode)
+
+WHAT WAS BUILT
+--------------
+Stitched the existing multi-page e-commerce hub into one cohesive, working,
+deployed website (storefront + admin portal):
+
+- index.html — storefront rebuilt & polished: preloader with progress bar and
+  curtain reveal, glassy sticky navbar with mobile hamburger, full-bleed photo
+  hero with parallax, staggered headline reveal + gradient accent, product
+  image floating animation, scrolling marquee strip with edge-fade mask,
+  product grid with real photography + spec chips + hover zoom, story section
+  with count-up stats, "why us" features, B2B wholesale quote form (inline
+  success state), testimonials with 5-star ratings, contact/visit section with
+  hours + WhatsApp CTA, and a dynamic-year footer.
+- Working shopping cart (all pages): add-to-cart, live badge, slide-in drawer
+  with quantity steppers + remove + INR subtotal, persisted to localStorage,
+  toast confirmations.
+- admin-login.html / admin-dashboard.html / admin-inventory.html /
+  admin-wholesale.html — verified & favicon added; login flows to dashboard.
+
+DESIGN DECISIONS
+----------------
+- Palette: near-black navy (#0e1c2f) base for dark surfaces, electric blue
+  (#007aff) as the single accent, ivory paper (#f8f9ff) light sections.
+- Type: Inter for everything + JetBrains Mono for mono kickers/labels; display
+  headlines use tight -0.035em tracking at 800 weight, clamp() scaled
+  (MotionSites-style type discipline, pulled as computed-style reference data).
+- Spacing: generous py-24/32 section rhythm, 1280px content max, clamp() gutters.
+- Motion: motion.dev (esm.sh CDN) — inView reveals, staggered hero load,
+  scroll-linked parallax, count-up stats. All motion is progressive
+  enhancement: cart + preloader run on a dependency-free script, so the site
+  works even if the CDN fails; prefers-reduced-motion fully disables motion.
+- Radius 12-24px, soft shadows, 1px low-opacity borders.
+
+ASSETS
+------
+- Local product photography: assets/img/laptop-silver.png, laptop-workstation.png,
+  desktop-gaming.png, desktop-aio.png, hero-bg.png (each img has an onerror
+  branded-gradient SVG fallback + width/height + lazy loading).
+- Icons: Material Symbols; inline SVG monogram favicon (navy + blue "R").
+- 21st.dev: used for reference search only (no components pulled — existing
+  Tailwind/M3 design system reused).
+
+WHAT WAS SKIPPED
+----------------
+- Real checkout/payment (buttons show a friendly "coming soon" toast).
+- Server-side quote submission (demo only, no backend).
+- The generator scratch folders (design screenshots) were removed before push.
+
+GIT
+---
+Commit: 5456e26 feat: initial website for Ramlaptops
