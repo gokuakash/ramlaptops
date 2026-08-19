@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ramlaptops Admin — Secure Login</title>
+<meta name="description" content="Ramlaptops enterprise admin portal — secure login.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e1c2f'/%3E%3Ctext x='32' y='43' font-family='Inter,Arial,sans-serif' font-size='34' font-weight='800' fill='%23007aff' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
+
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+<script src="assets/js/theme.js"></script>
+<link rel="stylesheet" href="assets/css/theme.css">
+</head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex items-center justify-center relative overflow-hidden">
+
+<!-- High-tech minimal background (self-hosted, no external images) -->
+<div class="absolute inset-0 z-0 bg-gradient-to-br from-surface via-surface to-surface-container"></div>
+<div class="absolute inset-0 z-0 ram-grid-bg opacity-70"></div>
+<!-- Soft gradient overlay keeps card readable (was 90% before, now 60%) -->
+<div class="absolute inset-0 z-0 bg-gradient-to-br from-surface/70 via-surface/50 to-surface-container/60"></div>
+<!-- Floating brand glyphs -->
+<span class="material-symbols-outlined absolute -left-8 top-10 text-ram-navy/5 select-none" style="font-size:18rem;line-height:1">laptop_mac</span>
+<span class="material-symbols-outlined absolute -right-12 bottom-0 text-ram-navy/5 select-none" style="font-size:22rem;line-height:1">memory</span>
+
+<!-- Back to store -->
+<a href="index.html" class="absolute top-6 left-6 z-20 inline-flex items-center gap-2 text-on-surface-variant hover:text-ram-navy transition-colors font-label-sm text-label-sm uppercase tracking-wider">
+  <span class="material-symbols-outlined" style="font-size:18px">arrow_back</span>
+  Back to store
+</a>
+
+<!-- Main Card -->
+<main class="relative z-10 w-full max-w-[480px] mx-4 md:mx-auto animate-fade-in-down">
+  <div class="bg-surface-container-lowest border border-outline-variant shadow-lg p-8 rounded-2xl">
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <div class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-surface-container mb-4">
+        <span class="material-symbols-outlined text-ram-navy" style="font-size:28px">admin_panel_settings</span>
+      </div>
+      <h1 class="font-headline-md text-headline-md text-on-surface mb-2 tracking-tight flex items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-ram-blue" style="font-size:24px">laptop_mac</span>
+        Ramlaptops Admin
+      </h1>
+      <p class="font-body-md text-body-md text-on-surface-variant">Secure Enterprise Access</p>
+    </div>
+
+    <!-- Tab navigation -->
+    <div class="flex border-b border-outline-variant mb-6" role="tablist">
+      <button aria-selected="true" class="flex-1 pb-3 font-body-md text-body-md font-bold text-primary border-b-2 border-primary transition-colors" id="tab-login" onclick="ramSwitchTab('login')" role="tab">Login</button>
+      <button aria-selected="false" class="flex-1 pb-3 font-body-md text-body-md text-on-surface-variant border-b-2 border-transparent hover:text-primary transition-colors" id="tab-signup" onclick="ramSwitchTab('signup')" role="tab">Create Account</button>
+    </div>
+
+    <!-- Login form -->
+    <form id="form-login" class="space-y-5 block" onsubmit="event.preventDefault(); window.location.href='admin-dashboard.html';">
+      <div class="flex flex-col gap-2">
+        <label class="font-label-sm text-label-sm text-on-surface uppercase" for="login-email">Corporate Email</label>
+        <input id="login-email" class="ram-input" placeholder="admin@ramlaptops.com" required type="email">
+      </div>
+      <div class="flex flex-col gap-2">
+        <div class="flex justify-between items-center">
+          <label class="font-label-sm text-label-sm text-on-surface uppercase" for="login-password">Password</label>
+          <a class="font-label-sm text-label-sm text-ram-navy hover:underline" href="#">Forgot password?</a>
+        </div>
+        <input id="login-password" class="ram-input" placeholder="••••••••" required type="password">
+      </div>
+      <button class="w-full h-12 mt-2 bg-ram-navy text-white font-body-md text-body-md font-bold flex items-center justify-center gap-2 hover:bg-ram-blue transition-colors shadow-sm rounded-xl" type="submit">
+        <span class="material-symbols-outlined" style="font-size:20px">login</span>
+        Sign In
+      </button>
+    </form>
+
+    <!-- Signup form -->
+    <form id="form-signup" class="space-y-5 hidden" onsubmit="event.preventDefault(); ramSwitchTab('login'); alert('Account created. Please sign in.');">
+      <div class="flex flex-col gap-2">
+        <label class="font-label-sm text-label-sm text-on-surface uppercase" for="signup-name">Full Name</label>
+        <input id="signup-name" class="ram-input" placeholder="John Doe" required type="text">
+      </div>
+      <div class="flex flex-col gap-2">
+        <label class="font-label-sm text-label-sm text-on-surface uppercase" for="signup-email">Corporate Email</label>
+        <input id="signup-email" class="ram-input" placeholder="name@ramlaptops.com" required type="email">
+      </div>
+      <div class="flex flex-col gap-2">
+        <label class="font-label-sm text-label-sm text-on-surface uppercase" for="signup-password">Secure Password</label>
+        <input id="signup-password" class="ram-input" placeholder="Create a strong password" required type="password">
+      </div>
+      <button class="w-full h-12 mt-2 bg-ram-navy text-white font-body-md text-body-md font-bold flex items-center justify-center gap-2 hover:bg-ram-blue transition-colors shadow-sm rounded-xl" type="submit">
+        <span class="material-symbols-outlined" style="font-size:20px">person_add</span>
+        Create Account
+      </button>
+      <p class="font-body-md text-body-md text-on-surface-variant text-center mt-4 text-[13px]">
+        By creating an account, you agree to our <a class="text-ram-navy hover:underline" href="#">Terms of Service</a>.
+      </p>
+    </form>
+  </div>
+
+  <div class="text-center mt-6 font-body-md text-body-md text-on-surface-variant text-[13px]">
+    © 2024 Ramlaptops Hardware Systems. All rights reserved.
+  </div>
+</main>
+
+</body>
+</html>

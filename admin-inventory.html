@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ramlaptops Admin — Inventory</title>
+<meta name="description" content="Manage wholesale and retail product catalog.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e1c2f'/%3E%3Ctext x='32' y='43' font-family='Inter,Arial,sans-serif' font-size='34' font-weight='800' fill='%23007aff' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
+
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+<script src="assets/js/theme.js"></script>
+<link rel="stylesheet" href="assets/css/theme.css">
+<style>
+  /* Tailwind needs `ram-nav-active` utility -> add manually */
+  .ram-nav-active { opacity: 1 !important; }
+</style>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md antialiased flex">
+
+<!-- Side nav (desktop) -->
+<nav class="hidden md:flex flex-col fixed left-0 top-0 h-screen w-64 bg-surface-container shadow-md z-50 py-base">
+  <div class="px-4 py-6">
+    <h1 class="font-headline-md text-headline-md font-bold text-on-surface flex items-center gap-2">
+      <span class="material-symbols-outlined text-ram-blue" style="font-size:24px">laptop_mac</span>
+      Ramlaptops
+    </h1>
+    <p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Admin Portal</p>
+  </div>
+  <div class="px-4 mb-6">
+    <a href="admin-wholesale.html" class="w-full bg-ram-navy text-white font-body-md text-body-md font-bold py-3 flex items-center justify-center gap-2 hover:bg-ram-blue transition-colors rounded-xl">
+      <span class="material-symbols-outlined">add</span> New Quote
+    </a>
+  </div>
+  <div class="flex-1 overflow-y-auto ram-scroll">
+    <a href="admin-dashboard.html" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-colors">
+      <span class="material-symbols-outlined">dashboard</span> Dashboard
+    </a>
+    <a href="admin-inventory.html" class="ram-nav-active flex items-center gap-3 px-4 py-3 text-primary font-bold border-r-4 border-primary bg-surface-bright transition-colors">
+      <span class="material-symbols-outlined">inventory_2</span> Products
+    </a>
+    <a href="admin-wholesale.html" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-colors">
+      <span class="material-symbols-outlined">request_quote</span> Wholesale Quotes
+    </a>
+    <a href="#" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-colors">
+      <span class="material-symbols-outlined">payments</span> Sales
+    </a>
+  </div>
+  <div class="mt-auto border-t border-outline-variant pt-4">
+    <a href="#" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-colors">
+      <span class="material-symbols-outlined">settings</span> Settings
+    </a>
+    <a href="admin-login.html" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-colors">
+      <span class="material-symbols-outlined">logout</span> Logout
+    </a>
+    <div class="px-4 py-4 mt-2 flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full border border-outline-variant bg-ram-navy text-white flex items-center justify-center font-bold">RK</div>
+      <div>
+        <p class="text-on-surface font-medium text-sm leading-tight">Ravi Kumar</p>
+        <p class="text-on-surface-variant text-xs">Super Admin</p>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile bottom nav -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface-container border-t border-outline-variant z-50 flex justify-around items-center h-16 pb-[calc(env(safe-area-inset-bottom)+0.5rem)] px-2 pt-2 shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
+  <a href="admin-dashboard.html" class="flex flex-col items-center justify-center w-full text-on-surface-variant">
+    <span class="material-symbols-outlined">dashboard</span><span class="text-[10px] font-medium mt-1">Dash</span>
+  </a>
+  <a href="admin-inventory.html" class="flex flex-col items-center justify-center w-full text-primary">
+    <span class="material-symbols-outlined">inventory_2</span><span class="text-[10px] font-medium mt-1">Products</span>
+  </a>
+  <a href="admin-wholesale.html" class="relative -top-6 flex justify-center px-2">
+    <span class="w-14 h-14 bg-ram-navy text-white rounded-full flex items-center justify-center shadow-lg hover:bg-ram-blue transition-colors">
+      <span class="material-symbols-outlined" style="font-size:28px">add</span>
+    </span>
+  </a>
+  <a href="admin-wholesale.html" class="flex flex-col items-center justify-center w-full text-on-surface-variant">
+    <span class="material-symbols-outlined">request_quote</span><span class="text-[10px] font-medium mt-1">Quotes</span>
+  </a>
+  <a href="#" class="flex flex-col items-center justify-center w-full text-on-surface-variant">
+    <span class="material-symbols-outlined">payments</span><span class="text-[10px] font-medium mt-1">Sales</span>
+  </a>
+</nav>
+
+<!-- Main wrapper -->
+<div class="flex-1 md:ml-64 flex flex-col h-screen w-full">
+
+  <!-- Mobile top bar -->
+  <header class="md:hidden bg-surface-bright border-b border-outline-variant flex justify-between items-center px-4 h-16 sticky top-0 z-40">
+    <a href="admin-dashboard.html" class="text-on-surface-variant w-10 h-10 rounded-full hover:bg-surface-container-high flex items-center justify-center">
+      <span class="material-symbols-outlined">arrow_back</span>
+    </a>
+    <span class="font-headline-md text-headline-md font-bold text-primary">Inventory</span>
+    <button onclick="ramOpenModal('new-product-modal')" class="text-ram-navy w-10 h-10 rounded-full hover:bg-surface-container-high flex items-center justify-center">
+      <span class="material-symbols-outlined">search</span>
+    </button>
+  </header>
+
+  <!-- Desktop top bar -->
+  <header class="hidden md:flex bg-surface-bright top-0 sticky z-40 border-b border-outline-variant justify-between items-center w-full px-gutter h-16 max-w-[calc(100%-16rem)]">
+    <span class="font-headline-md text-headline-md font-extrabold text-primary">Inventory</span>
+    <div class="flex items-center gap-6">
+      <div class="relative w-64">
+        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+        <input class="w-full bg-surface-container-low border-none py-2 pl-10 pr-4 text-body-md font-body-md focus:ring-2 focus:ring-ram-navy outline-none transition-all rounded-xl" placeholder="Search products..." type="text">
+      </div>
+      <div class="flex items-center gap-4">
+        <button class="text-on-surface-variant hover:text-primary transition-colors w-10 h-10 rounded-full hover:bg-surface-container-high justify-center flex items-center"><span class="material-symbols-outlined">notifications</span></button>
+        <button class="text-on-surface-variant hover:text-primary transition-colors w-10 h-10 rounded-full hover:bg-surface-container-high justify-center flex items-center"><span class="material-symbols-outlined">help</span></button>
+        <button class="text-on-surface-variant hover:text-primary transition-colors w-10 h-10 rounded-full hover:bg-surface-container-high justify-center flex items-center"><span class="material-symbols-outlined">account_circle</span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Canvas -->
+  <main class="flex-1 overflow-y-auto bg-background p-4 md:p-gutter">
+
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:justify-between items-start md:items-end gap-4 mb-6 md:mb-8">
+      <div>
+        <h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-background">Inventory</h2>
+        <p class="font-body-md md:font-body-lg text-body-md md:text-body-lg text-on-surface-variant mt-1 md:mt-2">Manage wholesale and retail product catalog.</p>
+      </div>
+      <button onclick="ramOpenModal('new-product-modal')" class="w-full md:w-auto justify-center bg-ram-navy text-white font-specs-table text-specs-table px-6 py-3 flex items-center gap-2 hover:bg-ram-blue transition-colors shadow-md rounded-xl">
+        <span class="material-symbols-outlined text-[20px]">add_circle</span>
+        Add New Product
+      </button>
+    </div>
+
+    <!-- Table card -->
+    <div class="bg-surface rounded-xl border border-outline-variant shadow-[0_4px_20px_rgba(11,25,44,0.05)] overflow-hidden flex flex-col">
+      <!-- Toolbar -->
+      <div class="p-4 border-b border-outline-variant bg-surface-bright flex flex-col md:flex-row items-stretch md:items-center gap-3 md:gap-4">
+        <div class="relative">
+          <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">filter_list</span>
+          <select class="w-full appearance-none bg-surface-container border border-outline-variant py-2 pl-10 pr-8 font-label-sm text-label-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-ram-navy rounded-lg">
+            <option>All Categories</option>
+            <option>Components</option>
+            <option>Servers</option>
+            <option>Laptops</option>
+          </select>
+          <span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px] pointer-events-none">expand_more</span>
+        </div>
+        <div class="relative">
+          <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">inventory</span>
+          <select class="w-full appearance-none bg-surface-container border border-outline-variant py-2 pl-10 pr-8 font-label-sm text-label-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-ram-navy rounded-lg">
+            <option>All Stock Levels</option>
+            <option>In Stock</option>
+            <option>Low Stock</option>
+            <option>Out of Stock</option>
+          </select>
+          <span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px] pointer-events-none">expand_more</span>
+        </div>
+      </div>
+
+      <!-- Desktop table -->
+      <div class="hidden md:block overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead class="bg-surface-dim border-b border-outline-variant">
+            <tr>
+              <th class="py-3 px-6 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider w-16">Image</th>
+              <th class="py-3 px-6 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Product Name & SKU</th>
+              <th class="py-3 px-6 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Category</th>
+              <th class="py-3 px-6 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Stock Level</th>
+              <th class="py-3 px-6 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider text-right">Price (Wholesale)</th>
+              <th class="py-3 px-6 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-outline-variant font-specs-table text-specs-table text-on-surface">
+            <!-- Row 1 -->
+            <tr class="hover:bg-surface-container-low transition-colors group">
+              <td class="py-4 px-6">
+                <div class="w-12 h-12 rounded bg-surface-container border border-outline-variant overflow-hidden flex items-center justify-center">
+                  <span class="material-symbols-outlined text-ram-navy">memory</span>
+                </div>
+              </td>
+              <td class="py-4 px-6">
+                <div class="font-bold text-on-background">Nvidia RTX 4090 Enterprise Edition</div>
+                <div class="font-label-sm text-label-sm text-on-surface-variant mt-1">SKU: GPU-NV-4090-ENT</div>
+              </td>
+              <td class="py-4 px-6">Components</td>
+              <td class="py-4 px-6">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#e6f4ea] text-[#137333] font-label-sm text-label-sm font-bold border border-[#ceead6]">
+                  <div class="w-1.5 h-1.5 rounded-full bg-[#137333] ram-pulse"></div> 142 Units
+                </span>
+              </td>
+              <td class="py-4 px-6 text-right font-bold text-on-background">₹1,32,000</td>
+              <td class="py-4 px-6 text-center">
+                <div class="flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <button class="w-8 h-8 rounded border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-ram-navy transition-colors" title="Edit"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+                  <button class="w-8 h-8 rounded border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-[#fce8e6] hover:text-[#c5221f] hover:border-[#fce8e6] transition-colors" title="Remove"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+                </div>
+              </td>
+            </tr>
+            <!-- Row 2 -->
+            <tr class="hover:bg-surface-container-low transition-colors group">
+              <td class="py-4 px-6">
+                <div class="w-12 h-12 rounded bg-surface-container border border-outline-variant overflow-hidden flex items-center justify-center">
+                  <span class="material-symbols-outlined text-ram-navy">dns</span>
+                </div>
+              </td>
+              <td class="py-4 px-6">
+                <div class="font-bold text-on-background">Dell PowerEdge R750 Rack Server</div>
+                <div class="font-label-sm text-label-sm text-on-surface-variant mt-1">SKU: SRV-DELL-R750</div>
+              </td>
+              <td class="py-4 px-6">Servers</td>
+              <td class="py-4 px-6">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#fef7e0] text-[#b06000] font-label-sm text-label-sm font-bold border border-[#fdecc8]">
+                  <div class="w-1.5 h-1.5 rounded-full bg-[#b06000] ram-pulse"></div> 8 Units (Low)
+                </span>
+              </td>
+              <td class="py-4 px-6 text-right font-bold text-on-background">₹3,52,000</td>
+              <td class="py-4 px-6 text-center">
+                <div class="flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <button class="w-8 h-8 rounded border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-ram-navy transition-colors" title="Edit"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+                  <button class="w-8 h-8 rounded border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-[#fce8e6] hover:text-[#c5221f] hover:border-[#fce8e6] transition-colors" title="Remove"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+                </div>
+              </td>
+            </tr>
+            <!-- Row 3 -->
+            <tr class="hover:bg-surface-container-low transition-colors group">
+              <td class="py-4 px-6">
+                <div class="w-12 h-12 rounded bg-surface-container border border-outline-variant overflow-hidden flex items-center justify-center">
+                  <span class="material-symbols-outlined text-ram-navy">laptop</span>
+                </div>
+              </td>
+              <td class="py-4 px-6">
+                <div class="font-bold text-on-background">ThinkPad X1 Carbon Gen 11</div>
+                <div class="font-label-sm text-label-sm text-on-surface-variant mt-1">SKU: LPT-LEN-X1G11</div>
+              </td>
+              <td class="py-4 px-6">Laptops</td>
+              <td class="py-4 px-6">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#e6f4ea] text-[#137333] font-label-sm text-label-sm font-bold border border-[#ceead6]">
+                  <div class="w-1.5 h-1.5 rounded-full bg-[#137333] ram-pulse"></div> 340 Units
+                </span>
+              </td>
+              <td class="py-4 px-6 text-right font-bold text-on-background">₹1,01,000</td>
+              <td class="py-4 px-6 text-center">
+                <div class="flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <button class="w-8 h-8 rounded border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-ram-navy transition-colors" title="Edit"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+                  <button class="w-8 h-8 rounded border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-[#fce8e6] hover:text-[#c5221f] hover:border-[#fce8e6] transition-colors" title="Remove"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Mobile cards -->
+      <div class="md:hidden flex flex-col p-4 gap-4 bg-surface-bright">
+        <div class="bg-surface border border-outline-variant rounded-xl p-4 flex gap-4 shadow-sm">
+          <div class="w-20 h-20 shrink-0 rounded-lg bg-surface-container border border-outline-variant flex items-center justify-center"><span class="material-symbols-outlined text-ram-navy">memory</span></div>
+          <div class="flex-1 flex flex-col">
+            <h3 class="font-bold text-on-background text-body-md leading-tight">Nvidia RTX 4090 Enterprise Edition</h3>
+            <span class="font-label-sm text-label-sm text-on-surface-variant mt-1">SKU: GPU-NV-4090-ENT</span>
+            <span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Components</span>
+            <div class="flex justify-between items-end mt-3">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#e6f4ea] text-[#137333] font-label-sm text-label-sm font-bold border border-[#ceead6]"><div class="w-1.5 h-1.5 rounded-full bg-[#137333] ram-pulse"></div> 142 Units</span>
+              <span class="font-bold text-on-background">₹1,32,000</span>
+            </div>
+            <div class="flex items-center gap-2 mt-4 pt-3 border-t border-outline-variant">
+              <button class="flex-1 h-9 rounded-lg border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-ram-navy transition-colors font-specs-table text-specs-table text-sm"><span class="material-symbols-outlined text-[18px] mr-1">edit</span> Edit</button>
+              <button class="w-9 h-9 shrink-0 rounded-lg border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-[#fce8e6] hover:text-[#c5221f] hover:border-[#fce8e6] transition-colors" title="Remove"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+            </div>
+          </div>
+        </div>
+        <div class="bg-surface border border-outline-variant rounded-xl p-4 flex gap-4 shadow-sm">
+          <div class="w-20 h-20 shrink-0 rounded-lg bg-surface-container border border-outline-variant flex items-center justify-center"><span class="material-symbols-outlined text-ram-navy">dns</span></div>
+          <div class="flex-1 flex flex-col">
+            <h3 class="font-bold text-on-background text-body-md leading-tight">Dell PowerEdge R750 Rack Server</h3>
+            <span class="font-label-sm text-label-sm text-on-surface-variant mt-1">SKU: SRV-DELL-R750</span>
+            <span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Servers</span>
+            <div class="flex justify-between items-end mt-3">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#fef7e0] text-[#b06000] font-label-sm text-label-sm font-bold border border-[#fdecc8]"><div class="w-1.5 h-1.5 rounded-full bg-[#b06000] ram-pulse"></div> 8 Units (Low)</span>
+              <span class="font-bold text-on-background">₹3,52,000</span>
+            </div>
+            <div class="flex items-center gap-2 mt-4 pt-3 border-t border-outline-variant">
+              <button class="flex-1 h-9 rounded-lg border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-ram-navy transition-colors font-specs-table text-specs-table text-sm"><span class="material-symbols-outlined text-[18px] mr-1">edit</span> Edit</button>
+              <button class="w-9 h-9 shrink-0 rounded-lg border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-[#fce8e6] hover:text-[#c5221f] hover:border-[#fce8e6] transition-colors" title="Remove"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+            </div>
+          </div>
+        </div>
+        <div class="bg-surface border border-outline-variant rounded-xl p-4 flex gap-4 shadow-sm">
+          <div class="w-20 h-20 shrink-0 rounded-lg bg-surface-container border border-outline-variant flex items-center justify-center"><span class="material-symbols-outlined text-ram-navy">laptop</span></div>
+          <div class="flex-1 flex flex-col">
+            <h3 class="font-bold text-on-background text-body-md leading-tight">ThinkPad X1 Carbon Gen 11</h3>
+            <span class="font-label-sm text-label-sm text-on-surface-variant mt-1">SKU: LPT-LEN-X1G11</span>
+            <span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Laptops</span>
+            <div class="flex justify-between items-end mt-3">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#e6f4ea] text-[#137333] font-label-sm text-label-sm font-bold border border-[#ceead6]"><div class="w-1.5 h-1.5 rounded-full bg-[#137333] ram-pulse"></div> 340 Units</span>
+              <span class="font-bold text-on-background">₹1,01,000</span>
+            </div>
+            <div class="flex items-center gap-2 mt-4 pt-3 border-t border-outline-variant">
+              <button class="flex-1 h-9 rounded-lg border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-ram-navy transition-colors font-specs-table text-specs-table text-sm"><span class="material-symbols-outlined text-[18px] mr-1">edit</span> Edit</button>
+              <button class="w-9 h-9 shrink-0 rounded-lg border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-[#fce8e6] hover:text-[#c5221f] hover:border-[#fce8e6] transition-colors" title="Remove"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="p-4 border-t border-outline-variant bg-surface-bright flex flex-col md:flex-row justify-between items-center gap-3">
+        <span class="font-label-sm text-label-sm text-on-surface-variant">Showing 1 to 3 of 1,240 entries</span>
+        <div class="flex gap-1">
+          <button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface-variant hover:bg-surface-container disabled:opacity-50"><span class="material-symbols-outlined text-[18px]">chevron_left</span></button>
+          <button class="w-8 h-8 flex items-center justify-center rounded bg-ram-navy text-white font-specs-table text-specs-table font-bold">1</button>
+          <button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface hover:bg-surface-container font-specs-table text-specs-table">2</button>
+          <button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface hover:bg-surface-container font-specs-table text-specs-table">3</button>
+          <button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface-variant hover:bg-surface-container"><span class="material-symbols-outlined text-[18px]">chevron_right</span></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="h-12"></div>
+  </main>
+</div>
+
+<!-- New product modal -->
+<div id="new-product-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 opacity-0 pointer-events-none transition-opacity duration-300 px-4 backdrop-blur-sm">
+  <div class="bg-surface rounded-xl shadow-lg w-full max-w-md p-6 flex flex-col gap-5 border border-outline-variant transform transition-transform duration-300 scale-95">
+    <div class="flex justify-between items-center">
+      <h3 class="font-headline-md text-headline-md text-on-background">Add New Product</h3>
+      <button onclick="ramCloseModal('new-product-modal')" class="text-on-surface-variant hover:text-on-background transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-surface-container"><span class="material-symbols-outlined">close</span></button>
+    </div>
+    <div class="flex flex-col gap-4">
+      <div class="flex flex-col gap-1.5">
+        <label class="font-label-sm text-label-sm text-on-surface-variant" for="np-name">Product Name</label>
+        <input id="np-name" class="ram-input" style="height:2.5rem" placeholder="Enter product name" type="text">
+      </div>
+      <div class="flex flex-col gap-1.5">
+        <label class="font-label-sm text-label-sm text-on-surface-variant" for="np-sku">SKU</label>
+        <input id="np-sku" class="ram-input" style="height:2.5rem" placeholder="e.g. SKU-12345" type="text">
+      </div>
+      <div class="flex flex-col gap-1.5">
+        <label class="font-label-sm text-label-sm text-on-surface-variant" for="np-cat">Category</label>
+        <select id="np-cat" class="ram-input" style="height:2.5rem">
+          <option>Select Category</option>
+          <option>Components</option>
+          <option>Servers</option>
+          <option>Laptops</option>
+        </select>
+      </div>
+    </div>
+    <div class="flex justify-end gap-3 mt-2">
+      <button class="px-5 py-2.5 font-specs-table text-specs-table text-on-surface-variant border border-outline-variant rounded-lg hover:bg-surface-container transition-colors" onclick="ramCloseModal('new-product-modal')">Cancel</button>
+      <button class="px-5 py-2.5 bg-ram-navy text-white font-specs-table text-specs-table rounded-lg hover:bg-ram-blue shadow-md transition-colors" onclick="ramCloseModal('new-product-modal')">Save Product</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

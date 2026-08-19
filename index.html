@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ramlaptops — Your Trusted Source for Laptops & Desktops</title>
+<meta name="description" content="Ramlaptops — premium laptops, desktops, workstations & all-in-one PCs for everyday users, with unbeatable bulk pricing for businesses.">
+<meta property="og:title" content="Ramlaptops — Trusted Source for Laptops & Desktops">
+<meta property="og:description" content="Premium tech for everyday users. Unbeatable bulk pricing for businesses. Bengaluru, India.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/img/hero-bg.png">
+<meta name="theme-color" content="#0e1c2f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e1c2f'/%3E%3Ctext x='32' y='43' font-family='Inter,Arial,sans-serif' font-size='34' font-weight='800' fill='%23007aff' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
+
+<!-- Tailwind (CDN) -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+<!-- Theme + helpers -->
+<script src="assets/js/theme.js"></script>
+<link rel="stylesheet" href="assets/css/theme.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ComputerStore",
+  "name": "Ramlaptops",
+  "description": "Premium laptops, desktops, workstations and all-in-one PCs with B2B wholesale pricing.",
+  "address": { "@type": "PostalAddress", "addressLocality": "Bengaluru", "addressCountry": "IN" },
+  "email": "contact@ramlaptops.com",
+  "openingHours": "Mo-Fr 09:00-18:00",
+  "priceRange": "₹₹"
+}
+</script>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased selection:bg-primary-fixed selection:text-on-primary-fixed ram-page">
+
+<!-- Preloader -->
+<div id="preloader" class="ram-preloader" aria-hidden="true">
+  <div class="flex items-center gap-3 text-3xl font-extrabold tracking-tight">
+    <span class="material-symbols-outlined text-ram-blue" style="font-size:34px">laptop_mac</span>
+    Ramlaptops
+  </div>
+  <div class="ram-preloader-bar"><span id="preloader-fill"></span></div>
+  <div id="preloader-count" class="font-label-sm text-label-sm text-white/60 uppercase tracking-widest">0%</div>
+</div>
+
+<!-- Top nav -->
+<header id="top-nav" class="bg-surface/85 backdrop-blur-md text-primary font-body-md text-body-md sticky top-0 w-full z-50 border-b border-outline-variant shadow-sm transition-all duration-300">
+  <div class="flex justify-between items-center w-full max-w-[1280px] mx-auto h-16" style="padding-left:clamp(16px,5vw,24px);padding-right:clamp(16px,5vw,24px)">
+    <a href="#top" class="text-headline-md font-headline-md font-extrabold text-primary flex items-center gap-2">
+      <span class="material-symbols-outlined text-ram-blue" style="font-size:28px">laptop_mac</span>
+      Ramlaptops
+    </a>
+    <nav class="hidden md:flex items-center space-x-1">
+      <a class="text-primary font-bold border-b-2 border-primary pb-1 px-2 py-1" href="#shop">Shop</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-low duration-200 px-2 py-1 rounded" href="#about">About</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-low duration-200 px-2 py-1 rounded" href="#why-us">Why Us</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-low duration-200 px-2 py-1 rounded" href="#wholesale">Wholesale</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-low duration-200 px-2 py-1 rounded" href="#testimonials">Reviews</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-low duration-200 px-2 py-1 rounded" href="#contact">Contact</a>
+    </nav>
+    <div class="flex items-center space-x-3">
+      <a href="#wholesale" class="hidden sm:inline-flex bg-ram-navy text-white font-bold text-body-md px-5 py-2.5 items-center gap-2 hover:bg-ram-blue transition-all active:translate-y-[1px] shadow-[0_4px_16px_rgba(11,25,44,0.18)] rounded-full">
+        Request a Quote
+      </a>
+      <button id="cart-btn" aria-label="Open shopping cart" class="text-primary hover:text-surface-tint transition-colors active:scale-95 duration-100 relative cursor-pointer">
+        <span class="material-symbols-outlined">shopping_cart</span>
+        <span id="cart-count" class="hidden absolute -top-1 -right-1 bg-ram-blue text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">0</span>
+      </button>
+      <a href="admin-login.html" class="text-primary hover:text-surface-tint transition-colors active:scale-95 duration-100 hidden md:block" aria-label="Admin">
+        <span class="material-symbols-outlined">admin_panel_settings</span>
+      </a>
+      <button id="mobile-menu-btn" aria-label="Menu" class="md:hidden text-primary">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+  </div>
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="md:hidden hidden bg-surface border-b border-outline-variant">
+    <nav class="flex flex-col px-6 py-4 space-y-4">
+      <a class="text-primary font-bold" href="#shop">Shop</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors" href="#about">About</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors" href="#why-us">Why Us</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors" href="#wholesale">Wholesale</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors" href="#testimonials">Reviews</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors" href="#contact">Contact</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors" href="admin-login.html">Admin Login</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section id="top" class="relative w-full h-[640px] md:h-[720px] flex items-center overflow-hidden bg-inverse-surface">
+  <div id="hero-bg" class="absolute inset-0 ram-parallax">
+    <img src="assets/img/hero-bg.png" alt="" width="1344" height="768" aria-hidden="true" class="w-full h-[120%] object-cover" style="filter:saturate(1.05) brightness(.8)">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#0e1c2f]/95 via-[#0e1c2f]/80 to-[#0b1c30]/60"></div>
+    <div class="absolute inset-0 opacity-20" style="background-image:linear-gradient(rgba(255,255,255,0.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.08) 1px,transparent 1px);background-size:60px 60px;"></div>
+    <div class="absolute inset-0 ram-hero-glow"></div>
+  </div>
+  <div class="relative z-10 w-full max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-[1.15fr_.85fr] items-center gap-10" style="padding-left:clamp(16px,5vw,24px);padding-right:clamp(16px,5vw,24px)">
+    <div class="hero-stagger">
+      <span class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white/90 font-label-sm text-label-sm uppercase tracking-wider px-3 py-1 rounded-full mb-6">
+        <span class="ram-dot ram-pulse"></span>
+        Premium Tech Retailer · Bengaluru
+      </span>
+      <h1 class="ram-display text-white mb-6">
+        Your trusted source for <span class="ram-text-gradient">laptops &amp; desktops</span>
+      </h1>
+      <p class="font-body-lg text-body-lg text-white/80 mb-8 max-w-xl">
+        Premium tech for everyday users. Unbeatable bulk pricing for businesses — handpicked hardware, tested before it ships.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="#shop" class="bg-white text-[#0e1c2f] px-8 py-4 font-bold text-body-md hover:bg-ram-blue hover:text-white transition-all active:translate-y-[2px] flex items-center justify-center gap-2 rounded-xl">
+          Shop Retail
+          <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+        </a>
+        <a href="#wholesale" class="bg-transparent border-2 border-white/70 text-white px-8 py-4 font-bold text-body-md hover:bg-white/10 transition-all active:translate-y-[2px] flex items-center justify-center rounded-xl">
+          Wholesale Inquiries
+        </a>
+      </div>
+      <div class="flex items-center gap-6 mt-10 text-white/70">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-ram-blue" style="font-size:20px">verified</span>
+          <span class="font-label-sm text-label-sm uppercase tracking-wider">1-Yr Warranty</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-ram-blue" style="font-size:20px">local_shipping</span>
+          <span class="font-label-sm text-label-sm uppercase tracking-wider">Nationwide Delivery</span>
+        </div>
+      </div>
+    </div>
+    <div class="hidden lg:flex justify-center relative">
+      <div class="absolute w-72 h-72 rounded-full bg-ram-blue/30 blur-[90px]"></div>
+      <div class="ram-img-wrap ram-float relative w-[420px]">
+        <img id="hero-img" src="assets/img/laptop-silver.png" alt="ProStream X15 ultrabook" width="1024" height="1024" class="ram-product-img w-full h-auto" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27640%27 height=%27640%27%3E%3Crect width=%27640%27 height=%27640%27 rx=%2724%27 fill=%27%230e1c2f%27/%3E%3Ctext x=%27320%27 y=%27340%27 font-size=%2732%27 fill=%27%23007aff%27 text-anchor=%27middle%27 font-family=%27Inter,sans-serif%27%3EProStream X15%3C/text%3E%3C/svg%3E'">
+      </div>
+    </div>
+  </div>
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/50 animate-bounce">
+    <span class="material-symbols-outlined">keyboard_arrow_down</span>
+  </div>
+</section>
+
+<!-- Marquee -->
+<div class="bg-ram-navy text-white overflow-hidden py-3.5 border-t border-white/10 ram-marquee-mask" aria-hidden="true">
+  <div class="ram-marquee flex whitespace-nowrap gap-0" style="width:max-content">
+    <div class="flex items-center gap-10 pr-10 font-label-sm text-label-sm uppercase tracking-widest text-white/70">
+      <span>Laptops</span><span class="ram-dot"></span>
+      <span>Desktops</span><span class="ram-dot"></span>
+      <span>Workstations</span><span class="ram-dot"></span>
+      <span>All-in-One PCs</span><span class="ram-dot"></span>
+      <span>Gaming Rigs</span><span class="ram-dot"></span>
+      <span>Enterprise Servers</span><span class="ram-dot"></span>
+      <span>B2B Wholesale</span><span class="ram-dot"></span>
+      <span>Bulk Pricing</span><span class="ram-dot"></span>
+      <span>On-site Support</span><span class="ram-dot"></span>
+    </div>
+    <div class="flex items-center gap-10 pr-10 font-label-sm text-label-sm uppercase tracking-widest text-white/70">
+      <span>Laptops</span><span class="ram-dot"></span>
+      <span>Desktops</span><span class="ram-dot"></span>
+      <span>Workstations</span><span class="ram-dot"></span>
+      <span>All-in-One PCs</span><span class="ram-dot"></span>
+      <span>Gaming Rigs</span><span class="ram-dot"></span>
+      <span>Enterprise Servers</span><span class="ram-dot"></span>
+      <span>B2B Wholesale</span><span class="ram-dot"></span>
+      <span>Bulk Pricing</span><span class="ram-dot"></span>
+      <span>On-site Support</span><span class="ram-dot"></span>
+    </div>
+  </div>
+</div>
+
+<!-- Retail / Products -->
+<section id="shop" class="py-24 md:py-32 max-w-[1280px] mx-auto" style="padding-left:clamp(16px,5vw,24px);padding-right:clamp(16px,5vw,24px)">
+  <div class="ram-reveal flex items-end justify-between gap-4 mb-12">
+    <div>
+      <span class="inline-flex items-center gap-2 bg-surface-container px-3 py-1 rounded-full mb-4 border border-outline-variant/40">
+        <span class="material-symbols-outlined text-ram-navy text-sm">storefront</span>
+        <span class="font-label-sm text-label-sm text-ram-navy uppercase tracking-wider">Featured Hardware</span>
+      </span>
+      <h2 class="ram-display-2 text-primary mb-2">Shop Our Latest Tech</h2>
+      <p class="font-body-md text-body-md text-on-surface-variant max-w-md">Handpicked configurations, ready to ship. Every unit burn-tested before it leaves our Bengaluru facility.</p>
+    </div>
+    <div class="hidden md:flex items-center gap-3">
+      <button class="w-11 h-11 rounded-full border border-outline-variant text-on-surface-variant hover:bg-surface-container transition-colors"><span class="material-symbols-outlined">arrow_back</span></button>
+      <button class="w-11 h-11 rounded-full bg-ram-navy text-white hover:bg-ram-blue transition-colors"><span class="material-symbols-outlined">arrow_forward</span></button>
+    </div>
+  </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+    <article class="ram-reveal ram-lift group bg-surface-container-lowest border border-outline-variant/40 shadow-[0_4px_20px_rgba(11,25,44,0.05)] flex flex-col overflow-hidden rounded-2xl">
+      <div class="ram-img-wrap aspect-square bg-white relative">
+        <img src="assets/img/laptop-silver.png" alt="ProStream X15 ultrabook laptop" loading="lazy" width="1024" height="1024" class="ram-product-img w-full h-full object-cover" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27640%27 height=%27640%27%3E%3Crect width=%27640%27 height=%27640%27 rx=%2724%27 fill=%27%230e1c2f%27/%3E%3Ctext x=%27320%27 y=%27340%27 font-size=%2726%27 fill=%27%23007aff%27 text-anchor=%27middle%27 font-family=%27Inter,sans-serif%27%3EProStream X15%3C/text%3E%3C/svg%3E'">
+        <span class="absolute top-3 left-3 bg-ram-blue text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">New</span>
+        <span class="absolute bottom-3 right-3 bg-white/90 backdrop-blur text-[#0e1c2f] text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">Laptop</span>
+      </div>
+      <div class="p-6 flex flex-col flex-grow">
+        <h3 class="font-headline-md text-[18px] text-primary mb-1">ProStream X15</h3>
+        <div class="flex flex-wrap gap-1.5 mb-4">
+          <span class="ram-chip">32GB RAM</span>
+          <span class="ram-chip">1TB SSD</span>
+        </div>
+        <div class="mt-auto flex items-center justify-between">
+          <span class="font-headline-md text-headline-md text-ram-navy font-bold">₹1,24,999</span>
+          <button data-add="ProStream X15" class="bg-ram-navy text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-ram-blue transition-all active:scale-90" aria-label="Add ProStream X15 to cart">
+            <span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <article class="ram-reveal ram-lift group bg-surface-container-lowest border border-outline-variant/40 shadow-[0_4px_20px_rgba(11,25,44,0.05)] flex flex-col overflow-hidden rounded-2xl" style="transition-delay:90ms">
+      <div class="ram-img-wrap aspect-square bg-white relative">
+        <img src="assets/img/laptop-workstation.png" alt="AirLite Business workstation laptop" loading="lazy" width="1024" height="1024" class="ram-product-img w-full h-full object-cover" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27640%27 height=%27640%27%3E%3Crect width=%27640%27 height=%27640%27 rx=%2724%27 fill=%27%230e1c2f%27/%3E%3Ctext x=%27320%27 y=%27340%27 font-size=%2726%27 fill=%27%23007aff%27 text-anchor=%27middle%27 font-family=%27Inter,sans-serif%27%3EAirLite Business%3C/text%3E%3C/svg%3E'">
+        <span class="absolute top-3 left-3 bg-ram-navy text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Bestseller</span>
+        <span class="absolute bottom-3 right-3 bg-white/90 backdrop-blur text-[#0e1c2f] text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">Workstation</span>
+      </div>
+      <div class="p-6 flex flex-col flex-grow">
+        <h3 class="font-headline-md text-[18px] text-primary mb-1">AirLite Business</h3>
+        <div class="flex flex-wrap gap-1.5 mb-4">
+          <span class="ram-chip">16GB RAM</span>
+          <span class="ram-chip">512GB SSD</span>
+        </div>
+        <div class="mt-auto flex items-center justify-between">
+          <span class="font-headline-md text-headline-md text-ram-navy font-bold">₹82,999</span>
+          <button data-add="AirLite Business" class="bg-ram-navy text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-ram-blue transition-all active:scale-90" aria-label="Add AirLite Business to cart">
+            <span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <article class="ram-reveal ram-lift group bg-surface-container-lowest border border-outline-variant/40 shadow-[0_4px_20px_rgba(11,25,44,0.05)] flex flex-col overflow-hidden rounded-2xl" style="transition-delay:180ms">
+      <div class="ram-img-wrap aspect-square bg-white relative">
+        <img src="assets/img/desktop-gaming.png" alt="Titan Gaming Desktop tower" loading="lazy" width="1024" height="1024" class="ram-product-img w-full h-full object-cover" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27640%27 height=%27640%27%3E%3Crect width=%27640%27 height=%27640%27 rx=%2724%27 fill=%27%230e1c2f%27/%3E%3Ctext x=%27320%27 y=%27340%27 font-size=%2726%27 fill=%27%23007aff%27 text-anchor=%27middle%27 font-family=%27Inter,sans-serif%27%3ETitan Gaming Desktop%3C/text%3E%3C/svg%3E'">
+        <span class="absolute top-3 left-3 bg-[#c5221f] text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Gaming</span>
+        <span class="absolute bottom-3 right-3 bg-white/90 backdrop-blur text-[#0e1c2f] text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">Desktop</span>
+      </div>
+      <div class="p-6 flex flex-col flex-grow">
+        <h3 class="font-headline-md text-[18px] text-primary mb-1">Titan Gaming Desktop</h3>
+        <div class="flex flex-wrap gap-1.5 mb-4">
+          <span class="ram-chip">RTX 4080</span>
+          <span class="ram-chip">64GB RAM</span>
+        </div>
+        <div class="mt-auto flex items-center justify-between">
+          <span class="font-headline-md text-headline-md text-ram-navy font-bold">₹1,82,999</span>
+          <button data-add="Titan Gaming Desktop" class="bg-ram-navy text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-ram-blue transition-all active:scale-90" aria-label="Add Titan Gaming Desktop to cart">
+            <span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <article class="ram-reveal ram-lift group bg-surface-container-lowest border border-outline-variant/40 shadow-[0_4px_20px_rgba(11,25,44,0.05)] flex flex-col overflow-hidden rounded-2xl" style="transition-delay:270ms">
+      <div class="ram-img-wrap aspect-square bg-white relative">
+        <img src="assets/img/desktop-aio.png" alt="Zenith All-In-One desktop computer" loading="lazy" width="1024" height="1024" class="ram-product-img w-full h-full object-cover" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27640%27 height=%27640%27%3E%3Crect width=%27640%27 height=%27640%27 rx=%2724%27 fill=%27%230e1c2f%27/%3E%3Ctext x=%27320%27 y=%27340%27 font-size=%2726%27 fill=%27%23007aff%27 text-anchor=%27middle%27 font-family=%27Inter,sans-serif%27%3EZenith All-In-One%3C/text%3E%3C/svg%3E'">
+        <span class="absolute top-3 left-3 bg-ram-navy text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">4K</span>
+        <span class="absolute bottom-3 right-3 bg-white/90 backdrop-blur text-[#0e1c2f] text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">All-in-One</span>
+      </div>
+      <div class="p-6 flex flex-col flex-grow">
+        <h3 class="font-headline-md text-[18px] text-primary mb-1">Zenith All-In-One</h3>
+        <div class="flex flex-wrap gap-1.5 mb-4">
+          <span class="ram-chip">27″ 4K</span>
+          <span class="ram-chip">16GB RAM</span>
+        </div>
+        <div class="mt-auto flex items-center justify-between">
+          <span class="font-headline-md text-headline-md text-ram-navy font-bold">₹1,07,999</span>
+          <button data-add="Zenith All-In-One" class="bg-ram-navy text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-ram-blue transition-all active:scale-90" aria-label="Add Zenith All-In-One to cart">
+            <span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+          </button>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- About / story -->
+<section id="about" class="py-24 md:py-32 bg-surface-container-lowest border-y border-outline-variant/40">
+  <div class="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 items-center" style="padding-left:clamp(16px,5vw,24px);padding-right:clamp(16px,5vw,24px)">
+    <div class="ram-reveal">
+      <span class="inline-flex items-center gap-2 bg-surface-container px-3 py-1 rounded-full mb-4 border border-outline-variant/40">
+        <span class="material-symbols-outlined text-ram-navy text-sm">badge</span>
+        <span class="font-label-sm text-label-sm text-ram-navy uppercase tracking-wider">Our Story</span>
+      </span>
+      <h2 class="ram-display-2 text-primary mb-6">Built in Bengaluru, trusted across India</h2>
+      <p class="font-body-lg text-body-lg text-on-surface-variant mb-6 max-w-lg">
+        What began as a two-person repair bench in 2014 is now a full-scale computer retailer and B2B wholesaler. We hand-assemble, configure and stress-test every machine — so what lands on your desk just works.
+      </p>
+      <div class="flex flex-col gap-4 mb-8">
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-ram-navy bg-surface-container p-2 rounded-lg">engineering</span>
+          <div>
+            <p class="font-bold text-on-surface">In-house QC Lab</p>
+            <p class="font-body-md text-body-md text-on-surface-variant">Every unit benchmarked before dispatch</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-ram-navy bg-surface-container p-2 rounded-lg">handshake</span>
+          <div>
+            <p class="font-bold text-on-surface">Genuine-Only Sourcing</p>
+            <p class="font-body-md text-body-md text-on-surface-variant">Authorized channels, full warranty backing</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-ram-navy bg-surface-container p-2 rounded-lg">support_agent</span>
+          <div>
+            <p class="font-bold text-on-surface">Real Human Support</p>
+            <p class="font-body-md text-body-md text-on-surface-variant">On-site servicing across major metros</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ram-reveal grid grid-cols-2 gap-4 md:gap-6">
+      <div class="ram-lift bg-surface-container-low rounded-2xl p-6 md:p-8 border border-outline-variant/30 text-center">
+        <p class="ram-stat-number font-display-lg-mobile text-[40px] md:text-[48px] font-extrabold text-ram-navy" data-count="10">0</p>
+        <p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mt-1">Years in Business</p>
+      </div>
+      <div class="ram-lift bg-surface-container-low rounded-2xl p-6 md:p-8 border border-outline-variant/30 text-center" style="transition-delay:90ms">
+        <p class="ram-stat-number font-display-lg-mobile text-[40px] md:text-[48px] font-extrabold text-ram-navy" data-count="50000">0</p>
+        <p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mt-1">Devices Delivered</p>
+      </div>
+      <div class="ram-lift bg-surface-container-low rounded-2xl p-6 md:p-8 border border-outline-variant/30 text-center" style="transition-delay:180ms">
+        <p class="ram-stat-number font-display-lg-mobile text-[40px] md:text-[48px] font-extrabold text-ram-navy" data-count="1200">0</p>
+        <p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mt-1">B2B Clients</p>
+      </div>
+      <div class="ram-lift bg-surface-container-low rounded-2xl p-6 md:p-8 border border-outline-variant/30 text-center" style="transition-delay:270ms">
+        <p class="ram-stat-number font-display-lg-mobile text-[40px] md:text-[48px] font-extrabold text-ram-navy" data-count="4.9" data-decimals="1">0</p>
+        <p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mt-1">Average Rating</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why us / features -->
+<section id="why-us" class="py-24 md:py-32 max-w-[1280px] mx-auto" style="padding-left:clamp(16px,5vw,24px);padding-right:clamp(16px,5vw,24px)">
+  <div class="ram-reveal text-center max-w-2xl mx-auto mb-12">
+    <h2 class="ram-display-2 text-primary mb-3">Why retailers choose us</h2>
+    <p class="font-body-lg text-body-lg text-on-surface-variant">From single units to enterprise fleets, the same obsessive quality control applies.</p>
+  </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+    <div class="ram-reveal ram-lift bg-surface-container-lowest border border-outline-variant/40 rounded-2xl p-7 shadow-[0_4px_20px_rgba(11,25,44,0.05)]">
+      <span class="material-symbols-outlined text-ram-blue bg-ram-blue/10 p-3 rounded-xl mb-5">verified_user</span>
+      <h3 class="font-headline-md text-[18px] font-bold text-primary mb-2">Authenticity Guaranteed</h3>
+      <p class="font-body-md text-body-md text-on-surface-variant">Every unit sourced from authorized distributors with full invoice and manufacturer warranty.</p>
+    </div>
+    <div class="ram-reveal ram-lift bg-surface-container-lowest border border-outline-variant/40 rounded-2xl p-7 shadow-[0_4px_20px_rgba(11,25,44,0.05)]" style="transition-delay:90ms">
+      <span class="material-symbols-outlined text-ram-blue bg-ram-blue/10 p-3 rounded-xl mb-5">speed</span>
+      <h3 class="font-headline-md text-[18px] font-bold text-primary mb-2">Same-Day Dispatch</h3>
+      <p class="font-body-md text-body-md text-on-surface-variant">Order before 2 PM, shipped the same day from Bengaluru with live tracking.</p>
+    </div>
+    <div class="ram-reveal ram-lift bg-surface-container-lowest border border-outline-variant/40 rounded-2xl p-7 shadow-[0_4px_20px_rgba(11,25,44,0.05)]" style="transition-delay:180ms">
+      <span class="material-symbols-outlined text-ram-blue bg-ram-blue/10 p-3 rounded-xl mb-5">tune</span>
+      <h3 class="font-headline-md text-[18px] font-bold text-primary mb-2">Custom Configurations</h3>
+      <p class="font-body-md text-body-md text-on-surface-variant">Custom imaging, RAM/SSD upgrades and fleet setup tailored to your business.</p>
+    </div>
+    <div class="ram-reveal ram-lift bg-surface-container-lowest border border-outline-variant/40 rounded-2xl p-7 shadow-[0_4px_20px_rgba(11,25,44,0.05)]" style="transition-delay:270ms">
+      <span class="material-symbols-outlined text-ram-blue bg-ram-blue/10 p-3 rounded-xl mb-5">headset_mic</span>
+      <h3 class="font-headline-md text-[18px] font-bold text-primary mb-2">Priority Support</h3>
+      <p class="font-body-md text-body-md text-on-surface-variant">Dedicated account manager and on-site servicing for wholesale partners.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Wholesale -->
+<section id="wholesale" class="py-24 md:py-32 w-full bg-surface-container-high border-t border-b border-outline-variant/30">
+  <div class="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 items-center" style="padding-left:clamp(16px,5vw,24px);padding-right:clamp(16px,5vw,24px)">
+    <div class="ram-reveal">
+      <span class="inline-flex items-center gap-2 bg-surface-container-lowest px-3 py-1 rounded-full mb-6 border border-outline-variant/30">
+        <span class="material-symbols-outlined text-ram-navy text-sm">business_center</span>
+        <span class="font-label-sm text-label-sm text-ram-navy uppercase tracking-wider">Enterprise Solutions</span>
+      </span>
+      <h2 class="ram-display-2 text-primary mb-6">Bulk Orders &amp; B2B Wholesale</h2>
+      <p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-md">
+        Benefit from dedicated account managers, tiered pricing, and priority support for business bulk orders. Streamline your procurement process with our expert team.
+      </p>
+      <ul class="space-y-4 mb-8">
+        <li class="flex items-center text-on-surface font-body-md text-body-md">
+          <span class="material-symbols-outlined text-ram-navy mr-3">check_circle</span>
+          Tiered Volume Discounts
+        </li>
+        <li class="flex items-center text-on-surface font-body-md text-body-md">
+          <span class="material-symbols-outlined text-ram-navy mr-3">check_circle</span>
+          Dedicated Account Manager
+        </li>
+        <li class="flex items-center text-on-surface font-body-md text-body-md">
+          <span class="material-symbols-outlined text-ram-navy mr-3">check_circle</span>
+          Custom Imaging & Configuration
+        </li>
+      </ul>
+    </div>
+    <div class="ram-reveal bg-surface-container-lowest p-8 shadow-[0_8px_30px_rgba(11,25,44,0.08)] border border-outline-variant/30 rounded-2xl">
+      <h3 class="font-headline-md text-[20px] font-bold text-primary mb-6">Request a Quote</h3>
+      <form id="quote-form" class="space-y-5">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div class="space-y-1">
+            <label class="font-label-sm text-label-sm text-on-surface-variant block" for="q-name">Full Name</label>
+            <input id="q-name" class="ram-input" placeholder="John Doe" type="text" required>
+          </div>
+          <div class="space-y-1">
+            <label class="font-label-sm text-label-sm text-on-surface-variant block" for="q-company">Company Name</label>
+            <input id="q-company" class="ram-input" placeholder="Acme Corp" type="text" required>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div class="space-y-1">
+            <label class="font-label-sm text-label-sm text-on-surface-variant block" for="q-email">Work Email</label>
+            <input id="q-email" class="ram-input" placeholder="john@acmecorp.com" type="email" required>
+          </div>
+          <div class="space-y-1">
+            <label class="font-label-sm text-label-sm text-on-surface-variant block" for="q-phone">Phone Number</label>
+            <input id="q-phone" class="ram-input" placeholder="+91 98765 43210" type="tel" required>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div class="space-y-1">
+            <label class="font-label-sm text-label-sm text-on-surface-variant block" for="q-qty">Expected Quantity</label>
+            <input id="q-qty" class="ram-input" placeholder="50" type="number" min="1" required>
+          </div>
+          <div class="space-y-1">
+            <label class="font-label-sm text-label-sm text-on-surface-variant block" for="q-cat">Category</label>
+            <select id="q-cat" class="ram-input">
+              <option>Laptops</option>
+              <option>Desktops</option>
+              <option>Mixed Hardware</option>
+            </select>
+          </div>
+        </div>
+        <button class="w-full h-12 bg-ram-navy text-white font-bold text-body-md hover:bg-ram-blue transition-all active:translate-y-[1px] mt-2 flex items-center justify-center group rounded-lg" type="submit">
+          Get a Quotation
+          <span class="material-symbols-outlined ml-2 text-sm group-hover:translate-x-1 transition-transform">chevron_right</span>
+        </button>
+        <p id="quote-success" class="hidden font-body-md text-body-md text-center text-green-700">Thanks! Our team will reach out within one business day.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section id="testimonials" class="py-24 md:py-32 max-w-[1280px] mx-auto" style="padding-left:clamp(16px,5vw,24px);padding-right:clamp(16px,5vw,24px)">
+  <div class="ram-reveal text-center max-w-2xl mx-auto mb-12">
+    <span class="inline-flex items-center gap-2 bg-surface-container px-3 py-1 rounded-full mb-4 border border-outline-variant/40">
+      <span class="material-symbols-outlined text-ram-navy text-sm">star</span>
+      <span class="font-label-sm text-label-sm text-ram-navy uppercase tracking-wider">Client Love</span>
+    </span>
+    <h2 class="ram-display-2 text-primary mb-3">Trusted by teams, loved by users</h2>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+    <figure class="ram-reveal ram-lift bg-surface-container-lowest border border-outline-variant/40 rounded-2xl p-8 shadow-[0_4px_20px_rgba(11,25,44,0.05)]">
+      <div class="ram-quote-mark mb-4">&ldquo;</div>
+      <div class="ram-stars mb-5"><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span></div>
+      <blockquote class="font-body-md text-body-md text-on-surface mb-6">Ordered 40 workstations for our new office — flawless imaging, delivered in four days, and their account manager was in touch the whole way.</blockquote>
+      <figcaption class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-ram-navy text-white flex items-center justify-center font-bold text-sm">AM</div>
+        <div>
+          <p class="font-bold text-on-surface text-sm">Arjun Mehta</p>
+          <p class="font-label-sm text-label-sm text-on-surface-variant">Founder, Nexora IT</p>
+        </div>
+      </figcaption>
+    </figure>
+    <figure class="ram-reveal ram-lift bg-surface-container-lowest border border-outline-variant/40 rounded-2xl p-8 shadow-[0_4px_20px_rgba(11,25,44,0.05)]" style="transition-delay:110ms">
+      <div class="ram-quote-mark mb-4">&ldquo;</div>
+      <div class="ram-stars mb-5"><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span></div>
+      <blockquote class="font-body-md text-body-md text-on-surface mb-6">Their bulk pricing beat three other suppliers we compared. The tiered discounts scale exactly the way a growing company needs.</blockquote>
+      <figcaption class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-ram-blue text-white flex items-center justify-center font-bold text-sm">PS</div>
+        <div>
+          <p class="font-bold text-on-surface text-sm">Priya Sharma</p>
+          <p class="font-label-sm text-label-sm text-on-surface-variant">Procurement, Bluestone Labs</p>
+        </div>
+      </figcaption>
+    </figure>
+    <figure class="ram-reveal ram-lift bg-surface-container-lowest border border-outline-variant/40 rounded-2xl p-8 shadow-[0_4px_20px_rgba(11,25,44,0.05)]" style="transition-delay:220ms">
+      <div class="ram-quote-mark mb-4">&ldquo;</div>
+      <div class="ram-stars mb-5"><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span></div>
+      <blockquote class="font-body-md text-body-md text-on-surface mb-6">Replaced our entire laptop fleet in one go. Same-day dispatch and on-site support meant zero downtime across three offices.</blockquote>
+      <figcaption class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-surface-container-high text-ram-navy flex items-center justify-center font-bold text-sm">DK</div>
+        <div>
+          <p class="font-bold text-on-surface text-sm">David Kessler</p>
+          <p class="font-label-sm text-label-sm text-on-surface-variant">IT Director, Global Freight</p>
+        </div>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- Contact / visit -->
+<section id="contact" class="py-24 md:py-32 bg-inverse-surface text-white">
+  <div class="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 items-center" style="padding-left:clamp(16px,5vw,24px);padding-right:clamp(16px,5vw,24px)">
+    <div class="ram-reveal">
+      <span class="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-3 py-1 rounded-full mb-4">
+        <span class="ram-dot ram-pulse"></span>
+        <span class="font-label-sm text-label-sm text-white/90 uppercase tracking-wider">Visit Us</span>
+      </span>
+      <h2 class="ram-display-2 mb-6">Come test-drive our machines</h2>
+      <p class="font-body-lg text-body-lg text-white/75 mb-8 max-w-md">Walk in, talk to a specialist, and take your new machine home the same day. Bulk buyers welcome by appointment.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div class="bg-white/5 border border-white/15 rounded-xl p-5">
+          <span class="material-symbols-outlined text-ram-blue mb-2">location_on</span>
+          <p class="font-bold mb-1">Address</p>
+          <p class="font-body-md text-body-md text-white/70">Tech Hub, Bengaluru,<br>Karnataka, India</p>
+        </div>
+        <div class="bg-white/5 border border-white/15 rounded-xl p-5">
+          <span class="material-symbols-outlined text-ram-blue mb-2">schedule</span>
+          <p class="font-bold mb-1">Hours</p>
+          <p class="font-body-md text-body-md text-white/70">Mon–Fri: 9:00 AM – 6:00 PM<br>Sat: 10:00 AM – 2:00 PM</p>
+        </div>
+        <div class="bg-white/5 border border-white/15 rounded-xl p-5">
+          <span class="material-symbols-outlined text-ram-blue mb-2">mail</span>
+          <p class="font-bold mb-1">Email</p>
+          <a class="font-body-md text-body-md text-white/70 hover:text-white" href="mailto:contact@ramlaptops.com">contact@ramlaptops.com</a>
+        </div>
+        <div class="bg-white/5 border border-white/15 rounded-xl p-5">
+          <span class="material-symbols-outlined text-ram-blue mb-2">call</span>
+          <p class="font-bold mb-1">Phone / WhatsApp</p>
+          <a class="font-body-md text-body-md text-white/70 hover:text-white" href="tel:+919876543210">+91 98765 43210</a>
+        </div>
+      </div>
+    </div>
+    <div class="ram-reveal flex flex-col items-center gap-6">
+      <div class="ram-img-wrap w-full rounded-2xl border border-white/15 shadow-[0_30px_80px_-20px_rgba(0,0,0,.6)]">
+        <img src="assets/img/hero-bg.png" alt="Ramlaptops store showroom" loading="lazy" width="1344" height="768" class="w-full h-64 object-cover" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27640%27 height=%27400%27%3E%3Crect width=%27640%27 height=%27400%27 fill=%27%230e1c2f%27/%3E%3Ctext x=%27320%27 y=%27210%27 font-size=%2724%27 fill=%27%23007aff%27 text-anchor=%27middle%27 font-family=%27Inter,sans-serif%27%3ERamlaptops Showroom%3C/text%3E%3C/svg%3E'">
+      </div>
+      <a href="https://wa.me/919876543210" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-white text-[#0e1c2f] font-bold px-7 py-4 hover:bg-ram-blue hover:text-white transition-all active:translate-y-[1px] rounded-full">
+        <span class="material-symbols-outlined text-[20px]">chat</span>
+        Chat on WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-[#0b1c30] text-white font-body-md text-body-md w-full">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-10 w-full py-14 max-w-[1280px] mx-auto" style="padding-left:clamp(16px,5vw,24px);padding-right:clamp(16px,5vw,24px)">
+    <div class="col-span-1">
+      <div class="text-headline-md font-headline-md font-bold mb-4 flex items-center gap-2">
+        <span class="material-symbols-outlined text-ram-blue" style="font-size:24px">laptop_mac</span>
+        Ramlaptops
+      </div>
+      <p class="text-white/60 text-sm mb-6">
+        High-performance computing specialists. Retail & wholesale, since 2014.
+      </p>
+    </div>
+    <div class="col-span-1">
+      <h4 class="font-bold mb-4">Contact</h4>
+      <ul class="space-y-2 text-white/70">
+        <li class="flex items-start gap-2"><span class="material-symbols-outlined text-[18px] mt-0.5">location_on</span> Tech Hub, Bengaluru, India</li>
+        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">schedule</span> Mon–Fri 9am–6pm</li>
+        <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">mail</span> <a class="hover:text-ram-blue" href="mailto:contact@ramlaptops.com">contact@ramlaptops.com</a></li>
+      </ul>
+    </div>
+    <div class="col-span-1">
+      <h4 class="font-bold mb-4">Quick Links</h4>
+      <ul class="space-y-2 text-white/70">
+        <li><a class="hover:text-ram-blue transition-colors" href="#shop">Shop</a></li>
+        <li><a class="hover:text-ram-blue transition-colors" href="#about">About</a></li>
+        <li><a class="hover:text-ram-blue transition-colors" href="#wholesale">Wholesale</a></li>
+        <li><a class="hover:text-ram-blue transition-colors" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="col-span-1">
+      <h4 class="font-bold mb-4">Connect</h4>
+      <div class="flex gap-3">
+        <a aria-label="LinkedIn" class="text-white/70 hover:text-ram-blue transition-colors" href="#"><span class="material-symbols-outlined">business</span></a>
+        <a aria-label="Twitter" class="text-white/70 hover:text-ram-blue transition-colors" href="#"><span class="material-symbols-outlined">tag</span></a>
+        <a aria-label="Instagram" class="text-white/70 hover:text-ram-blue transition-colors" href="#"><span class="material-symbols-outlined">photo_camera</span></a>
+      </div>
+      <a href="admin-login.html" class="inline-flex items-center gap-2 mt-6 text-white/60 hover:text-white transition-colors font-label-sm text-label-sm uppercase tracking-wider border border-white/20 hover:border-white px-3 py-1.5 rounded-full">
+        <span class="material-symbols-outlined" style="font-size:16px">admin_panel_settings</span>
+        Admin Portal
+      </a>
+    </div>
+  </div>
+  <div class="border-t border-white/10 py-5 text-center text-sm text-white/50">
+    © <span id="year">2026</span> Ramlaptops Hardware Systems. All rights reserved.
+  </div>
+</footer>
+
+<!-- Cart drawer -->
+<div id="cart-overlay" class="fixed inset-0 z-[150] bg-black/50 opacity-0 pointer-events-none transition-opacity duration-300 backdrop-blur-sm"></div>
+<aside id="cart-drawer" class="fixed right-0 top-0 h-full w-full max-w-md z-[160] bg-surface shadow-2xl flex flex-col translate-x-full transition-transform duration-300 ease-[cubic-bezier(.2,.7,.2,1)]" aria-label="Shopping cart" role="dialog" aria-modal="true">
+  <header class="flex items-center justify-between px-6 h-16 border-b border-outline-variant shrink-0">
+    <h3 class="font-headline-md text-headline-md font-bold text-primary flex items-center gap-2">
+      <span class="material-symbols-outlined text-ram-blue">shopping_cart</span> Your Cart
+    </h3>
+    <button onclick="ramCloseCart()" aria-label="Close cart" class="text-on-surface-variant hover:text-on-background w-9 h-9 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+  </header>
+  <div id="cart-items" class="flex-1 overflow-y-auto px-6 py-4 space-y-4"></div>
+  <footer class="border-t border-outline-variant px-6 py-5 space-y-4 bg-surface-bright shrink-0">
+    <div class="flex justify-between items-center">
+      <span class="font-body-md text-body-md text-on-surface-variant">Subtotal</span>
+      <span id="cart-subtotal" class="font-headline-md text-headline-md font-extrabold text-ram-navy">₹0</span>
+    </div>
+    <button id="checkout-btn" class="w-full h-12 bg-ram-navy text-white font-bold hover:bg-ram-blue transition-all active:translate-y-[1px] rounded-xl">Proceed to Checkout</button>
+    <p class="font-label-sm text-label-sm text-on-surface-variant text-center">Shipping & taxes calculated at checkout</p>
+  </footer>
+</aside>
+
+<!-- Toast -->
+<div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[170] bg-ram-navy text-white px-5 py-3 rounded-full font-body-md text-body-md font-medium shadow-xl opacity-0 pointer-events-none transition-all duration-300 translate-y-4">Added to cart</div>
+
+<!-- Core script: dependency-free preloader, cart, fallbacks -->
+<script>
+(function () {
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  window.__motionReady = false;
+
+  // Year
+  var y = document.getElementById("year");
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Quote form (no backend — show confirmation inline)
+  var qf = document.getElementById("quote-form");
+  if (qf) qf.addEventListener("submit", function (e) {
+    e.preventDefault();
+    qf.classList.add("hidden");
+    var ok = document.getElementById("quote-success");
+    ok.classList.remove("hidden");
+    ok.classList.add("block");
+    ok.style.opacity = "0";
+    ok.style.transform = "translateY(12px)";
+    requestAnimationFrame(function () {
+      ok.style.transition = "opacity .5s ease, transform .5s cubic-bezier(.2,.7,.2,1)";
+      ok.style.opacity = "1";
+      ok.style.transform = "none";
+    });
+  });
+
+  // ---- Preloader (no dependencies) ----
+  var pre = document.getElementById("preloader");
+  var countEl = document.getElementById("preloader-count");
+  var fillEl = document.getElementById("preloader-fill");
+  document.body.classList.add("overflow-hidden");
+
+  var forceShow = function () {
+    var heroChildren = document.querySelectorAll(".hero-stagger > *");
+    for (var i = 0; i < heroChildren.length; i++) {
+      heroChildren[i].style.opacity = "1";
+      heroChildren[i].style.transform = "none";
+      heroChildren[i].style.filter = "none";
+    }
+    var stats = document.querySelectorAll("[data-count]");
+    for (var j = 0; j < stats.length; j++) {
+      var d = stats[j].getAttribute("data-count");
+      if (d) stats[j].textContent = d.indexOf(".") !== -1 ? d : Number(d).toLocaleString("en-IN");
+    }
+    var reveals = document.querySelectorAll(".ram-reveal");
+    for (var k = 0; k < reveals.length; k++) reveals[k].classList.add("ram-in");
+  };
+
+  var finish = function () {
+    if (!pre || pre.getAttribute("data-done")) return;
+    pre.setAttribute("data-done", "1");
+    document.body.classList.remove("overflow-hidden");
+    if (reduce) { if (pre.parentNode) pre.parentNode.removeChild(pre); forceShow(); return; }
+    pre.style.transition = "transform .7s cubic-bezier(.2,.7,.2,1)";
+    pre.style.transform = "translateY(-100%)";
+    setTimeout(function () { if (pre.parentNode) pre.parentNode.removeChild(pre); }, 750);
+    if (!window.__motionReady) forceShow();
+  };
+
+  if (reduce) {
+    document.body.classList.remove("overflow-hidden");
+    if (pre) pre.remove();
+    forceShow();
+  } else if (pre) {
+    var started = Date.now();
+    var tick = function () {
+      var p = Math.min(100, Math.round((Date.now() - started) / 1100 * 100));
+      if (countEl) countEl.textContent = p + "%";
+      if (fillEl) fillEl.style.width = p + "%";
+      if (p >= 100) { finish(); return; }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+    setTimeout(finish, 2600); // never let the preloader block the site
+  } else {
+    document.body.classList.remove("overflow-hidden");
+  }
+
+  // ---- Cart (no dependencies) ----
+  var CART_KEY = "ramlaptops_cart";
+  var PRODUCTS = {
+    "ProStream X15": { price: 124999, img: "assets/img/laptop-silver.png" },
+    "AirLite Business": { price: 82999, img: "assets/img/laptop-workstation.png" },
+    "Titan Gaming Desktop": { price: 182999, img: "assets/img/desktop-gaming.png" },
+    "Zenith All-In-One": { price: 107999, img: "assets/img/desktop-aio.png" }
+  };
+  var inr = new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 });
+
+  var cart = [];
+  try { cart = JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch (e) { cart = []; }
+
+  var cartBtn = document.getElementById("cart-btn");
+  var cartCount = document.getElementById("cart-count");
+  var cartDrawer = document.getElementById("cart-drawer");
+  var cartOverlay = document.getElementById("cart-overlay");
+  var cartItems = document.getElementById("cart-items");
+  var cartSubtotal = document.getElementById("cart-subtotal");
+  var checkoutBtn = document.getElementById("checkout-btn");
+  var toast = document.getElementById("toast");
+  var toastTimer;
+
+  var cartTotalQty = function () { return cart.reduce(function (s, i) { return s + i.qty; }, 0); };
+  var cartTotal = function () { return cart.reduce(function (s, i) { return s + i.qty * (PRODUCTS[i.name] ? PRODUCTS[i.name].price : 0); }, 0); };
+  var saveCart = function () { try { localStorage.setItem(CART_KEY, JSON.stringify(cart)); } catch (e) {} };
+
+  var showToast = function (msg) {
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.style.opacity = "1";
+    toast.style.transform = "translate(-50%, 0)";
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () {
+      toast.style.opacity = "0";
+      toast.style.transform = "translate(-50%, 16px)";
+    }, 1800);
+  };
+
+  var updateBadge = function () {
+    if (!cartCount) return;
+    var q = cartTotalQty();
+    cartCount.textContent = q;
+    cartCount.classList.toggle("hidden", q === 0);
+  };
+
+  var openCart = function () {
+    renderCart();
+    cartDrawer.classList.remove("translate-x-full");
+    cartOverlay.classList.remove("opacity-0", "pointer-events-none");
+    document.body.classList.add("overflow-hidden");
+  };
+  var closeCart = function () {
+    cartDrawer.classList.add("translate-x-full");
+    cartOverlay.classList.add("opacity-0", "pointer-events-none");
+    document.body.classList.remove("overflow-hidden");
+  };
+  window.ramCloseCart = closeCart;
+
+  var addToCart = function (name) {
+    var found = null;
+    for (var i = 0; i < cart.length; i++) if (cart[i].name === name) { found = cart[i]; break; }
+    if (found) found.qty += 1; else cart.push({ name: name, qty: 1 });
+    saveCart();
+    updateBadge();
+    showToast(name + " added to cart");
+  };
+
+  var changeQty = function (name, delta) {
+    for (var i = 0; i < cart.length; i++) {
+      if (cart[i].name === name) {
+        cart[i].qty += delta;
+        if (cart[i].qty <= 0) cart.splice(i, 1);
+        break;
+      }
+    }
+    saveCart(); updateBadge(); renderCart();
+  };
+  window.changeQty = changeQty;
+
+  var removeItem = function (name) {
+    for (var i = 0; i < cart.length; i++) if (cart[i].name === name) { cart.splice(i, 1); break; }
+    saveCart(); updateBadge(); renderCart();
+    showToast(name + " removed");
+  };
+  window.removeItem = removeItem;
+
+  var renderCart = function () {
+    if (!cartItems) return;
+    if (!cart.length) {
+      cartItems.innerHTML = '<div class="flex flex-col items-center justify-center h-full text-center gap-3 text-on-surface-variant py-16">' +
+        '<span class="material-symbols-outlined text-[56px] text-outline-variant">shopping_cart</span>' +
+        '<p class="font-body-md text-body-md">Your cart is empty</p>' +
+        '<a href="#shop" onclick="ramCloseCart()" class="mt-2 text-ram-navy font-bold hover:underline">Browse products</a>' +
+        '</div>';
+      cartSubtotal.textContent = inr.format(0);
+      return;
+    }
+    var html = "";
+    for (var i = 0; i < cart.length; i++) {
+      var it = cart[i];
+      var p = PRODUCTS[it.name] || { price: 0, img: "" };
+      html += '<div class="flex gap-4 items-center bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-3">' +
+        '<div class="w-16 h-16 rounded-lg bg-white overflow-hidden shrink-0 border border-outline-variant/30">' +
+        '<img src="' + p.img + '" alt="' + it.name + '" width="64" height="64" class="w-full h-full object-cover ram-product-img">' +
+        '</div>' +
+        '<div class="flex-1 min-w-0">' +
+        '<p class="font-bold text-on-surface text-sm truncate">' + it.name + '</p>' +
+        '<p class="font-specs-table text-specs-table text-ram-navy font-bold mt-0.5">' + inr.format(p.price * it.qty) + '</p>' +
+        '<div class="flex items-center gap-2 mt-2">' +
+        '<button class="w-7 h-7 rounded-md border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors" onclick="changeQty(\'' + it.name + '\', -1)" aria-label="Decrease quantity of ' + it.name + '">−</button>' +
+        '<span class="text-sm font-semibold w-5 text-center">' + it.qty + '</span>' +
+        '<button class="w-7 h-7 rounded-md border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors" onclick="changeQty(\'' + it.name + '\', 1)" aria-label="Increase quantity of ' + it.name + '">+</button>' +
+        '</div></div>' +
+        '<button class="text-on-surface-variant hover:text-[#c5221f] transition-colors shrink-0" onclick="removeItem(\'' + it.name + '\')" aria-label="Remove ' + it.name + '"><span class="material-symbols-outlined text-[20px]">delete</span></button>' +
+        '</div>';
+    }
+    cartItems.innerHTML = html;
+    cartSubtotal.textContent = inr.format(cartTotal());
+  };
+
+  if (cartBtn) cartBtn.addEventListener("click", openCart);
+  if (cartOverlay) cartOverlay.addEventListener("click", closeCart);
+  if (checkoutBtn) checkoutBtn.addEventListener("click", function () { showToast("Checkout is coming soon — call +91 98765 43210 to order"); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeCart(); });
+  var addBtns = document.querySelectorAll("[data-add]");
+  for (var b = 0; b < addBtns.length; b++) {
+    addBtns[b].addEventListener("click", (function (name) { return function () { addToCart(name); }; })(addBtns[b].getAttribute("data-add")));
+  }
+  updateBadge();
+})();
+</script>
+
+<!-- Motion script: progressive enhancement only -->
+<script type="module">
+  import { animate, inView, stagger, scroll } from "https://esm.sh/motion";
+  window.__motionReady = true;
+
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!reduce) {
+    // Hero staggered load (the preloader's fallback already showed content if motion was slow)
+    animate(".hero-stagger > *", {
+      opacity: 1, y: 0, filter: "blur(0px)"
+    }, { delay: stagger(0.13), duration: 0.8, ease: [0.16, 1, 0.3, 1] });
+
+    // Scroll reveals
+    document.querySelectorAll(".ram-reveal").forEach((el) => {
+      inView(el, () => {
+        animate(el, { opacity: 1, y: 0, filter: "blur(0px)" }, {
+          duration: 0.85,
+          ease: [0.16, 1, 0.3, 1]
+        });
+      }, { amount: 0.18, margin: "0px 0px -50px 0px" });
+    });
+
+    // Count-up stats
+    const fmt = new Intl.NumberFormat("en-IN");
+    document.querySelectorAll("[data-count]").forEach((el) => {
+      const target = parseFloat(el.dataset.count);
+      const decimals = parseInt(el.dataset.decimals || "0", 10);
+      const startVal = parseFloat(el.textContent.replace(/[^\d.-]/g, "")) || 0;
+      inView(el, () => {
+        animate(startVal, target, {
+          duration: 1.8,
+          ease: "easeOut",
+          onUpdate: (v) => {
+            el.textContent = decimals ? v.toFixed(decimals) : fmt.format(Math.round(v));
+          }
+        });
+      }, { amount: 0.8 });
+    });
+
+    // Hero parallax
+    const hero = document.getElementById("top");
+    const heroBg = document.getElementById("hero-bg");
+    const heroImg = document.getElementById("hero-img");
+    if (hero && heroBg) scroll(animate(heroBg, { y: [0, 90] }), { target: hero, offset: ["start start", "end start"] });
+    if (hero && heroImg) scroll(animate(heroImg, { y: [0, -50] }), { target: hero, offset: ["start end", "end start"] });
+  }
+</script>
+
+</body>
+</html>

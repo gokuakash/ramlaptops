@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ramlaptops Admin — Wholesale Quotes</title>
+<meta name="description" content="Manage and respond to inbound wholesale inquiries.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e1c2f'/%3E%3Ctext x='32' y='43' font-family='Inter,Arial,sans-serif' font-size='34' font-weight='800' fill='%23007aff' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
+
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+<script src="assets/js/theme.js"></script>
+<link rel="stylesheet" href="assets/css/theme.css">
+<style>.ram-nav-active{opacity:1 !important}</style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased overflow-x-hidden min-h-screen flex">
+
+<!-- Side nav (desktop) -->
+<nav class="hidden md:flex flex-col fixed left-0 top-0 h-screen w-64 bg-surface-container shadow-md z-50 py-base">
+  <div class="px-4 py-6 border-b border-outline-variant/30 mb-4">
+    <h1 class="font-headline-md text-headline-md font-bold text-on-surface flex items-center gap-2">
+      <span class="material-symbols-outlined text-ram-blue" style="font-size:24px">laptop_mac</span>
+      Ramlaptops
+    </h1>
+    <p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Admin Portal</p>
+  </div>
+  <div class="px-4 mb-6">
+    <a href="admin-wholesale.html" class="w-full bg-ram-navy text-white font-body-md text-body-md font-bold py-3 flex items-center justify-center gap-2 hover:bg-ram-blue transition-colors rounded-xl shadow-sm">
+      <span class="material-symbols-outlined">add</span> New Quote
+    </a>
+  </div>
+  <div class="flex-1 overflow-y-auto ram-scroll">
+    <a href="admin-dashboard.html" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-colors"><span class="material-symbols-outlined">dashboard</span> Dashboard</a>
+    <a href="admin-inventory.html" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-colors"><span class="material-symbols-outlined">inventory_2</span> Products</a>
+    <a href="admin-wholesale.html" class="ram-nav-active flex items-center gap-3 px-4 py-3 text-primary font-bold border-r-4 border-primary bg-surface-bright transition-colors"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">request_quote</span> Wholesale Quotes</a>
+    <a href="#" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-colors"><span class="material-symbols-outlined">payments</span> Sales</a>
+  </div>
+  <div class="mt-auto border-t border-outline-variant/30 pt-4 pb-4">
+    <a href="#" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-colors"><span class="material-symbols-outlined">settings</span> Settings</a>
+    <a href="admin-login.html" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-colors"><span class="material-symbols-outlined">logout</span> Logout</a>
+  </div>
+</nav>
+
+<!-- Mobile bottom nav -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface-container border-t border-outline-variant z-50 flex justify-around items-center h-16 pb-[calc(env(safe-area-inset-bottom)+0.5rem)] px-2 pt-2 shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
+  <a href="admin-dashboard.html" class="flex flex-col items-center justify-center w-full text-on-surface-variant"><span class="material-symbols-outlined">dashboard</span><span class="text-[10px] font-medium mt-1">Dash</span></a>
+  <a href="admin-inventory.html" class="flex flex-col items-center justify-center w-full text-on-surface-variant"><span class="material-symbols-outlined">inventory_2</span><span class="text-[10px] font-medium mt-1">Products</span></a>
+  <a href="admin-wholesale.html" class="relative -top-6 flex justify-center px-2">
+    <span class="w-14 h-14 bg-ram-navy text-white rounded-full flex items-center justify-center shadow-lg hover:bg-ram-blue transition-colors"><span class="material-symbols-outlined" style="font-size:28px">add</span></span>
+  </a>
+  <a href="admin-wholesale.html" class="flex flex-col items-center justify-center w-full text-primary"><span class="material-symbols-outlined">request_quote</span><span class="text-[10px] font-medium mt-1">Quotes</span></a>
+  <a href="#" class="flex flex-col items-center justify-center w-full text-on-surface-variant"><span class="material-symbols-outlined">payments</span><span class="text-[10px] font-medium mt-1">Sales</span></a>
+</nav>
+
+<!-- Main wrapper -->
+<div class="flex-1 flex flex-col md:ml-64 w-full min-h-screen">
+
+  <!-- Mobile top bar -->
+  <header class="md:hidden top-0 sticky z-40 bg-surface-bright border-b border-outline-variant flex justify-between items-center px-margin-mobile h-16">
+    <a href="admin-dashboard.html" class="text-on-surface-variant w-10 h-10 rounded-full hover:bg-surface-container-high flex items-center justify-center"><span class="material-symbols-outlined">arrow_back</span></a>
+    <span class="font-headline-md text-headline-md font-extrabold text-primary">Quotes</span>
+    <button class="text-on-surface-variant w-10 h-10"><span class="material-symbols-outlined">menu</span></button>
+  </header>
+
+  <!-- Desktop top bar -->
+  <header class="hidden md:flex top-0 sticky z-40 bg-surface-bright border-b border-outline-variant justify-between items-center w-full px-gutter h-16 max-w-[calc(100%-16rem)]">
+    <span class="font-headline-md text-headline-md font-extrabold text-primary">Quote Requests</span>
+    <div class="flex items-center gap-4">
+      <div class="relative hidden lg:block">
+        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+        <input class="pl-10 pr-4 py-2 bg-surface-container border-none focus:ring-2 focus:ring-ram-navy text-body-md font-body-md text-on-surface w-64 placeholder:text-on-surface-variant rounded-xl" placeholder="Search orders, quotes..." type="text">
+      </div>
+      <button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">notifications</span></button>
+      <button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">help</span></button>
+      <button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">account_circle</span></button>
+    </div>
+  </header>
+
+  <!-- Canvas -->
+  <main class="flex-1 w-full px-4 md:px-gutter py-8 md:py-12 max-w-container-max mx-auto pb-28 md:pb-12">
+    <!-- Page header -->
+    <div class="mb-8 md:mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <div>
+        <h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-2">Quote Requests</h1>
+        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Manage and respond to inbound wholesale inquiries from enterprise clients.</p>
+      </div>
+      <div class="flex gap-3">
+        <button class="flex items-center gap-2 px-4 py-2 border-2 border-outline text-on-surface font-body-md text-body-md font-bold hover:bg-surface-container transition-colors rounded-xl"><span class="material-symbols-outlined">filter_list</span> Filter</button>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-gutter mb-12">
+      <div class="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant shadow-[0_4px_20px_rgba(11,25,44,0.05)] flex flex-col">
+        <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-2">Pending Review</span>
+        <div class="flex items-baseline gap-2">
+          <span class="font-display-lg-mobile text-display-lg-mobile text-error">12</span>
+          <span class="font-body-md text-body-md text-on-surface-variant">requests</span>
+        </div>
+      </div>
+      <div class="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant shadow-[0_4px_20px_rgba(11,25,44,0.05)] flex flex-col">
+        <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-2">Quotes Sent</span>
+        <div class="flex items-baseline gap-2">
+          <span class="font-display-lg-mobile text-display-lg-mobile text-on-surface">45</span>
+          <span class="font-body-md text-body-md text-on-surface-variant">this month</span>
+        </div>
+      </div>
+      <div class="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant shadow-[0_4px_20px_rgba(11,25,44,0.05)] flex flex-col">
+        <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-2">Conversion Rate</span>
+        <div class="flex items-baseline gap-2">
+          <span class="font-display-lg-mobile text-display-lg-mobile text-on-surface">68%</span>
+          <span class="font-body-md text-body-md text-on-surface-variant">+2.4% vs last</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quote cards -->
+    <div class="flex flex-col gap-4">
+      <!-- Pending -->
+      <article class="bg-surface-container-lowest border border-outline-variant shadow-[0_4px_20px_rgba(11,25,44,0.05)] hover:shadow-md hover:-translate-y-0.5 transition-all p-6 flex flex-col lg:flex-row gap-6 lg:items-center justify-between rounded-xl">
+        <div class="flex-1 min-w-[250px]">
+          <div class="flex items-center gap-3 mb-2 flex-wrap">
+            <h3 class="font-headline-md text-headline-md text-on-surface m-0">Apex Data Systems</h3>
+            <span class="bg-error-container text-on-error-container font-label-sm text-label-sm px-2 py-1 rounded-lg">PENDING</span>
+          </div>
+          <div class="flex flex-col gap-1">
+            <div class="flex items-center gap-2 text-on-surface-variant font-body-md text-body-md"><span class="material-symbols-outlined text-[18px]">person</span> Sarah Jenkins, Procurement Lead</div>
+            <div class="flex items-center gap-2 text-on-surface-variant font-body-md text-body-md"><span class="material-symbols-outlined text-[18px]">mail</span> s.jenkins@apexdata.com</div>
+          </div>
+        </div>
+        <div class="flex-1 flex items-center gap-4 bg-surface rounded p-3 border border-outline-variant/30 min-w-[300px]">
+          <div class="w-16 h-16 bg-surface-container-high rounded shrink-0 flex items-center justify-center"><span class="material-symbols-outlined text-[32px] text-ram-navy">laptop</span></div>
+          <div class="flex flex-col">
+            <span class="font-label-sm text-label-sm text-on-surface-variant mb-1">PRODUCT INTEREST</span>
+            <span class="font-body-md text-body-md text-on-surface font-bold leading-tight">ThinkPad X1 Carbon Gen 11</span>
+            <span class="font-specs-table text-specs-table text-on-surface-variant mt-1">Requested Qty: <strong class="text-ram-navy">250 Units</strong></span>
+          </div>
+        </div>
+        <div class="shrink-0 mt-4 lg:mt-0 flex flex-col items-start lg:items-end gap-2">
+          <span class="font-label-sm text-label-sm text-on-surface-variant">Submitted: 2 hours ago</span>
+          <button class="bg-ram-navy text-white font-body-md text-body-md font-bold px-6 py-3 flex items-center gap-2 hover:bg-ram-blue transition-colors whitespace-nowrap rounded-xl">Review & Respond<span class="material-symbols-outlined">chevron_right</span></button>
+        </div>
+      </article>
+
+      <!-- Reviewed -->
+      <article class="bg-surface-container-lowest border border-outline-variant shadow-[0_4px_20px_rgba(11,25,44,0.05)] hover:shadow-md hover:-translate-y-0.5 transition-all p-6 flex flex-col lg:flex-row gap-6 lg:items-center justify-between rounded-xl">
+        <div class="flex-1 min-w-[250px]">
+          <div class="flex items-center gap-3 mb-2 flex-wrap">
+            <h3 class="font-headline-md text-headline-md text-on-surface m-0">Global Logistics Inc.</h3>
+            <span class="bg-surface-variant text-on-surface-variant font-label-sm text-label-sm px-2 py-1 rounded-lg">REVIEWED</span>
+          </div>
+          <div class="flex flex-col gap-1">
+            <div class="flex items-center gap-2 text-on-surface-variant font-body-md text-body-md"><span class="material-symbols-outlined text-[18px]">person</span> Marcus Thorne, IT Director</div>
+            <div class="flex items-center gap-2 text-on-surface-variant font-body-md text-body-md"><span class="material-symbols-outlined text-[18px]">mail</span> m.thorne@globallogistics.net</div>
+          </div>
+        </div>
+        <div class="flex-1 flex items-center gap-4 bg-surface rounded p-3 border border-outline-variant/30 min-w-[300px]">
+          <div class="w-16 h-16 bg-surface-container-high rounded shrink-0 flex items-center justify-center"><span class="material-symbols-outlined text-[32px] text-ram-navy">desktop_windows</span></div>
+          <div class="flex flex-col">
+            <span class="font-label-sm text-label-sm text-on-surface-variant mb-1">PRODUCT INTEREST</span>
+            <span class="font-body-md text-body-md text-on-surface font-bold leading-tight">Precision 7920 Tower Workstation</span>
+            <span class="font-specs-table text-specs-table text-on-surface-variant mt-1">Requested Qty: <strong class="text-ram-navy">50 Units</strong></span>
+          </div>
+        </div>
+        <div class="shrink-0 mt-4 lg:mt-0 flex flex-col items-start lg:items-end gap-2">
+          <span class="font-label-sm text-label-sm text-on-surface-variant">Assigned to: David K.</span>
+          <button class="bg-transparent text-ram-navy border-2 border-ram-navy font-body-md text-body-md font-bold px-6 py-2.5 flex items-center gap-2 hover:bg-surface-container transition-colors whitespace-nowrap rounded-xl">Draft Quote<span class="material-symbols-outlined">edit_document</span></button>
+        </div>
+      </article>
+
+      <!-- Sent -->
+      <article class="bg-surface-container-lowest border border-outline-variant shadow-[0_4px_20px_rgba(11,25,44,0.05)] opacity-80 hover:opacity-100 transition-opacity p-6 flex flex-col lg:flex-row gap-6 lg:items-center justify-between rounded-xl">
+        <div class="flex-1 min-w-[250px]">
+          <div class="flex items-center gap-3 mb-2 flex-wrap">
+            <h3 class="font-headline-md text-headline-md text-on-surface m-0">Nexus Health Group</h3>
+            <span class="bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm px-2 py-1 rounded-lg">QUOTE SENT</span>
+          </div>
+          <div class="flex flex-col gap-1">
+            <div class="flex items-center gap-2 text-on-surface-variant font-body-md text-body-md"><span class="material-symbols-outlined text-[18px]">person</span> Dr. Emily Chen, Operations</div>
+            <div class="flex items-center gap-2 text-on-surface-variant font-body-md text-body-md"><span class="material-symbols-outlined text-[18px]">mail</span> echen@nexushealth.org</div>
+          </div>
+        </div>
+        <div class="flex-1 flex items-center gap-4 bg-surface rounded p-3 border border-outline-variant/30 min-w-[300px]">
+          <div class="w-16 h-16 bg-surface-container-high rounded shrink-0 flex items-center justify-center"><span class="material-symbols-outlined text-[32px] text-on-surface-variant">devices</span></div>
+          <div class="flex flex-col">
+            <span class="font-label-sm text-label-sm text-on-surface-variant mb-1">PRODUCT INTEREST</span>
+            <span class="font-body-md text-body-md text-on-surface font-bold leading-tight">Mixed Hardware Fleet (Custom)</span>
+            <span class="font-specs-table text-specs-table text-on-surface-variant mt-1">Requested Qty: <strong class="text-ram-navy">120+ Units</strong></span>
+          </div>
+        </div>
+        <div class="shrink-0 mt-4 lg:mt-0 flex flex-col items-start lg:items-end gap-2">
+          <span class="font-label-sm text-label-sm text-on-surface-variant">Valid until: Oct 24, 2024</span>
+          <button class="bg-transparent text-on-surface-variant border border-outline-variant font-body-md text-body-md font-bold px-6 py-2.5 flex items-center gap-2 hover:bg-surface-container transition-colors whitespace-nowrap rounded-xl">View Quote<span class="material-symbols-outlined">visibility</span></button>
+        </div>
+      </article>
+    </div>
+  </main>
+</div>
+
+</body>
+</html>

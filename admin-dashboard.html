@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ramlaptops Admin — Overview</title>
+<meta name="description" content="Ramlaptops enterprise admin dashboard.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e1c2f'/%3E%3Ctext x='32' y='43' font-family='Inter,Arial,sans-serif' font-size='34' font-weight='800' fill='%23007aff' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
+
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+<script src="assets/js/theme.js"></script>
+<link rel="stylesheet" href="assets/css/theme.css">
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex">
+
+<!-- Side nav (desktop) -->
+<nav class="hidden md:flex flex-col fixed left-0 top-0 h-screen w-64 bg-surface-container shadow-md z-50 py-base">
+  <div class="px-4 py-6">
+    <h1 class="font-headline-md text-headline-md font-bold text-on-surface flex items-center gap-2">
+      <span class="material-symbols-outlined text-ram-blue" style="font-size:24px">laptop_mac</span>
+      Ramlaptops
+    </h1>
+    <p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Admin Portal</p>
+  </div>
+  <div class="px-4 mb-6">
+    <a href="admin-wholesale.html" class="w-full bg-ram-navy text-white font-body-md text-body-md font-bold py-3 flex items-center justify-center gap-2 hover:bg-ram-blue transition-colors rounded-xl">
+      <span class="material-symbols-outlined">add</span>
+      New Quote
+    </a>
+  </div>
+  <div class="flex-1 overflow-y-auto ram-scroll">
+    <a href="admin-dashboard.html" class="ram-nav-active flex items-center gap-3 px-4 py-3 text-primary font-bold border-r-4 border-primary bg-surface-bright transition-colors">
+      <span class="material-symbols-outlined">dashboard</span> Dashboard
+    </a>
+    <a href="admin-inventory.html" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-colors">
+      <span class="material-symbols-outlined">inventory_2</span> Products
+    </a>
+    <a href="admin-wholesale.html" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-colors">
+      <span class="material-symbols-outlined">request_quote</span> Wholesale Quotes
+    </a>
+    <a href="#" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-colors">
+      <span class="material-symbols-outlined">payments</span> Sales
+    </a>
+  </div>
+  <div class="mt-auto border-t border-outline-variant pt-4">
+    <a href="#" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-colors">
+      <span class="material-symbols-outlined">settings</span> Settings
+    </a>
+    <a href="admin-login.html" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-colors">
+      <span class="material-symbols-outlined">logout</span> Logout
+    </a>
+    <div class="px-4 py-4 mt-2 flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full border border-outline-variant bg-ram-navy text-white flex items-center justify-center font-bold">RK</div>
+      <div>
+        <p class="text-on-surface font-medium text-sm leading-tight">Ravi Kumar</p>
+        <p class="text-on-surface-variant text-xs">Super Admin</p>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile bottom nav -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface-container border-t border-outline-variant z-50 flex justify-around items-center h-16 pb-[calc(env(safe-area-inset-bottom)+0.5rem)] px-2 pt-2 shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
+  <a href="admin-dashboard.html" class="flex flex-col items-center justify-center w-full text-primary">
+    <span class="material-symbols-outlined">dashboard</span><span class="text-[10px] font-medium mt-1">Dash</span>
+  </a>
+  <a href="admin-inventory.html" class="flex flex-col items-center justify-center w-full text-on-surface-variant">
+    <span class="material-symbols-outlined">inventory_2</span><span class="text-[10px] font-medium mt-1">Products</span>
+  </a>
+  <a href="admin-wholesale.html" class="relative -top-6 flex justify-center px-2">
+    <span class="w-14 h-14 bg-ram-navy text-white rounded-full flex items-center justify-center shadow-lg hover:bg-ram-blue transition-colors">
+      <span class="material-symbols-outlined" style="font-size:28px">add</span>
+    </span>
+  </a>
+  <a href="admin-wholesale.html" class="flex flex-col items-center justify-center w-full text-on-surface-variant">
+    <span class="material-symbols-outlined">request_quote</span><span class="text-[10px] font-medium mt-1">Quotes</span>
+  </a>
+  <a href="#" class="flex flex-col items-center justify-center w-full text-on-surface-variant">
+    <span class="material-symbols-outlined">payments</span><span class="text-[10px] font-medium mt-1">Sales</span>
+  </a>
+</nav>
+
+<!-- Main wrapper -->
+<div class="flex-1 md:ml-64 flex flex-col min-h-screen pb-20 md:pb-0">
+
+  <!-- Top bar -->
+  <header class="bg-surface-bright top-0 sticky z-40 border-b border-outline-variant flex justify-between items-center w-full h-16 px-4 md:px-gutter max-w-full md:max-w-[calc(100%-16rem)]">
+    <div class="flex items-center gap-3">
+      <span class="font-headline-md text-xl font-extrabold text-primary md:hidden">Ramlaptops</span>
+      <span class="font-headline-md text-headline-md font-extrabold text-primary hidden md:block">Overview</span>
+    </div>
+    <div class="flex items-center gap-2 md:gap-4 ml-auto">
+      <div class="relative hidden sm:block">
+        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+        <input class="pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant focus:outline-none focus:border-ram-navy focus:ring-1 focus:ring-ram-navy w-48 md:w-64 text-sm rounded-full" placeholder="Search..." type="text">
+      </div>
+      <button class="text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-container-low">
+        <span class="material-symbols-outlined">notifications</span>
+      </button>
+      <button class="text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-container-low hidden sm:block">
+        <span class="material-symbols-outlined">help</span>
+      </button>
+      <button class="text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-container-low">
+        <span class="material-symbols-outlined">account_circle</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main canvas -->
+  <main class="flex-1 p-4 md:p-gutter bg-surface overflow-y-auto">
+    <div class="max-w-container-max mx-auto space-y-6 md:space-y-8">
+
+      <!-- Page header -->
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
+        <div>
+          <h2 class="font-display-lg text-3xl md:text-display-lg text-on-surface">Overview</h2>
+          <p class="font-body-md text-body-md text-on-surface-variant mt-1 md:mt-2">Welcome back, Ravi. Here's what's happening today.</p>
+        </div>
+        <div class="text-xs md:text-sm font-label-sm text-on-surface-variant bg-surface-container-low px-3 py-1.5 rounded border border-outline-variant">
+          Last updated: Just now
+        </div>
+      </div>
+
+      <!-- KPI bento -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        <div class="bg-surface-container-lowest p-5 md:p-6 border border-outline-variant shadow-[0px_4px_20px_rgba(11,25,44,0.05)] hover:shadow-lg hover:-translate-y-0.5 transition-all rounded-2xl animate-fade-in delay-100">
+          <div class="flex justify-between items-start mb-4">
+            <p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Total Revenue</p>
+            <span class="material-symbols-outlined text-ram-navy bg-ram-navy/10 p-1.5 rounded-xl">payments</span>
+          </div>
+          <h3 class="font-headline-md text-2xl md:text-headline-md text-on-surface">₹45.2M</h3>
+          <div class="flex items-center gap-1 mt-2 text-sm text-green-700">
+            <span class="material-symbols-outlined text-[16px]">trending_up</span>
+            <span class="font-medium">+12.5% vs last month</span>
+          </div>
+        </div>
+        <div class="bg-surface-container-lowest p-5 md:p-6 border border-outline-variant shadow-[0px_4px_20px_rgba(11,25,44,0.05)] hover:shadow-lg hover:-translate-y-0.5 transition-all rounded-2xl animate-fade-in delay-200">
+          <div class="flex justify-between items-start mb-4">
+            <p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">New Quotes</p>
+            <span class="material-symbols-outlined text-ram-navy bg-ram-navy/10 p-1.5 rounded-xl">request_quote</span>
+          </div>
+          <h3 class="font-headline-md text-2xl md:text-headline-md text-on-surface">12</h3>
+          <div class="flex items-center gap-1 mt-2 text-sm text-on-surface-variant">
+            <span class="material-symbols-outlined text-[16px]">pending_actions</span>
+            <span>Requires attention</span>
+          </div>
+        </div>
+        <div class="bg-surface-container-lowest p-5 md:p-6 border border-outline-variant shadow-[0px_4px_20px_rgba(11,25,44,0.05)] hover:shadow-lg hover:-translate-y-0.5 transition-all rounded-2xl animate-fade-in delay-300">
+          <div class="flex justify-between items-start mb-4">
+            <p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Total Orders</p>
+            <span class="material-symbols-outlined text-ram-navy bg-ram-navy/10 p-1.5 rounded-xl">local_shipping</span>
+          </div>
+          <h3 class="font-headline-md text-2xl md:text-headline-md text-on-surface">1,240</h3>
+          <div class="flex items-center gap-1 mt-2 text-sm text-green-700">
+            <span class="material-symbols-outlined text-[16px]">trending_up</span>
+            <span class="font-medium">+8.2% vs last month</span>
+          </div>
+        </div>
+        <div class="bg-surface-container-lowest p-5 md:p-6 border border-error-container shadow-[0px_4px_20px_rgba(11,25,44,0.05)] hover:shadow-lg hover:-translate-y-0.5 transition-all relative overflow-hidden rounded-2xl animate-fade-in delay-400">
+          <div class="absolute top-0 right-0 w-16 h-16 bg-error/10 rounded-bl-full"></div>
+          <div class="flex justify-between items-start mb-4">
+            <p class="font-label-sm text-label-sm text-error uppercase tracking-wider font-bold">Inventory Alerts</p>
+            <span class="material-symbols-outlined text-error bg-error-container/30 p-1.5 rounded-xl">warning</span>
+          </div>
+          <h3 class="font-headline-md text-2xl md:text-headline-md text-on-surface">3 Items</h3>
+          <div class="flex items-center gap-1 mt-2 text-sm text-error">
+            <span class="font-medium">Low stock warning</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart + activities -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Chart -->
+        <div class="lg:col-span-2 bg-surface-container-lowest p-5 md:p-6 border border-outline-variant shadow-[0px_4px_20px_rgba(11,25,44,0.05)] flex flex-col rounded-2xl">
+          <div class="flex justify-between items-center mb-6">
+            <h3 class="font-headline-md text-headline-md text-on-surface text-lg">Sales Performance</h3>
+            <select class="bg-surface-container-low border border-outline-variant rounded text-sm py-1 px-2 focus:ring-ram-navy focus:border-ram-navy">
+              <option>This Year</option>
+              <option>Last Year</option>
+            </select>
+          </div>
+          <div class="flex-1 relative min-h-[260px] md:min-h-[300px] flex items-end gap-2 border-l border-b border-outline-variant pb-2 pl-2 mt-4 ml-6 md:ml-10">
+            <div class="absolute left-[-30px] md:left-[-40px] top-0 h-full flex flex-col justify-between text-[10px] md:text-xs text-on-surface-variant py-2">
+              <span>50M</span><span>40M</span><span>30M</span><span>20M</span><span>10M</span><span>0</span>
+            </div>
+            <div class="absolute bottom-[-24px] left-2 w-full flex justify-between text-[10px] md:text-xs text-on-surface-variant pr-4">
+              <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span class="hidden sm:inline">May</span><span class="hidden sm:inline">Jun</span><span class="hidden md:inline">Jul</span><span class="hidden md:inline">Aug</span>
+            </div>
+            <div class="absolute inset-0 border-t border-outline-variant/30 top-[20%]"></div>
+            <div class="absolute inset-0 border-t border-outline-variant/30 top-[40%]"></div>
+            <div class="absolute inset-0 border-t border-outline-variant/30 top-[60%]"></div>
+            <div class="absolute inset-0 border-t border-outline-variant/30 top-[80%]"></div>
+            <div class="w-full flex justify-between items-end h-full relative z-10 px-1 md:px-2">
+              <div class="w-[10%] sm:w-[8%] bg-surface-container-high h-[30%] rounded-t-sm hover:bg-ram-navy transition-colors cursor-pointer" title="₹15.2M"></div>
+              <div class="w-[10%] sm:w-[8%] bg-surface-container-high h-[45%] rounded-t-sm hover:bg-ram-navy transition-colors cursor-pointer" title="₹22.6M"></div>
+              <div class="w-[10%] sm:w-[8%] bg-surface-container-high h-[35%] rounded-t-sm hover:bg-ram-navy transition-colors cursor-pointer" title="₹17.4M"></div>
+              <div class="w-[10%] sm:w-[8%] bg-surface-container-high h-[55%] rounded-t-sm hover:bg-ram-navy transition-colors cursor-pointer" title="₹27.5M"></div>
+              <div class="hidden sm:block w-[8%] bg-surface-container-high h-[65%] rounded-t-sm hover:bg-ram-navy transition-colors cursor-pointer" title="₹32.8M"></div>
+              <div class="hidden sm:block w-[8%] bg-surface-container-high h-[50%] rounded-t-sm hover:bg-ram-navy transition-colors cursor-pointer" title="₹24.9M"></div>
+              <div class="hidden md:block w-[8%] bg-ram-navy h-[85%] rounded-t-sm hover:bg-ram-blue transition-colors cursor-pointer shadow-md" title="₹42.1M (current)"></div>
+              <div class="hidden md:block w-[8%] bg-surface-container-high h-[70%] rounded-t-sm hover:bg-ram-navy transition-colors cursor-pointer" title="₹35.0M"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Activities -->
+        <div class="bg-surface-container-lowest p-5 md:p-6 border border-outline-variant shadow-[0px_4px_20px_rgba(11,25,44,0.05)] flex flex-col rounded-2xl animate-fade-in delay-200">
+          <div class="flex justify-between items-center mb-6">
+            <h3 class="font-headline-md text-headline-md text-on-surface text-lg">Recent Activities</h3>
+            <button class="text-sm font-medium text-ram-navy hover:underline">View All</button>
+          </div>
+          <div class="flex-1 space-y-4">
+            <div class="flex gap-4 p-3 rounded-xl hover:bg-surface-container-low transition-colors">
+              <div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center shrink-0 text-ram-navy">
+                <span class="material-symbols-outlined">request_quote</span>
+              </div>
+              <div>
+                <p class="text-sm text-on-surface font-medium">New Quote Requested</p>
+                <p class="text-xs text-on-surface-variant mt-0.5">Apex Data Systems requested 250× ThinkPad X1</p>
+                <p class="font-label-sm text-[10px] text-on-surface-variant mt-1 uppercase">10 mins ago</p>
+              </div>
+            </div>
+            <div class="flex gap-4 p-3 rounded-xl hover:bg-surface-container-low transition-colors">
+              <div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center shrink-0 text-green-700">
+                <span class="material-symbols-outlined">local_shipping</span>
+              </div>
+              <div>
+                <p class="text-sm text-on-surface font-medium">Order Shipped</p>
+                <p class="text-xs text-on-surface-variant mt-0.5">Order #842 (Retail) has been dispatched.</p>
+                <p class="font-label-sm text-[10px] text-on-surface-variant mt-1 uppercase">2 hours ago</p>
+              </div>
+            </div>
+            <div class="flex gap-4 p-3 rounded-xl hover:bg-surface-container-low transition-colors">
+              <div class="w-10 h-10 rounded-full bg-error-container flex items-center justify-center shrink-0 text-error">
+                <span class="material-symbols-outlined">warning</span>
+              </div>
+              <div>
+                <p class="text-sm text-on-surface font-medium">Stock Alert</p>
+                <p class="text-xs text-on-surface-variant mt-0.5">RTX 4090 GPU inventory below threshold (2 left).</p>
+                <p class="font-label-sm text-[10px] text-on-surface-variant mt-1 uppercase">5 hours ago</p>
+              </div>
+            </div>
+            <div class="flex gap-4 p-3 rounded-xl hover:bg-surface-container-low transition-colors">
+              <div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center shrink-0 text-ram-navy">
+                <span class="material-symbols-outlined">person_add</span>
+              </div>
+              <div>
+                <p class="text-sm text-on-surface font-medium">New B2B Account</p>
+                <p class="text-xs text-on-surface-variant mt-0.5">TechSolutions Inc. completed registration.</p>
+                <p class="font-label-sm text-[10px] text-on-surface-variant mt-1 uppercase">Yesterday</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="h-8"></div>
+    </div>
+  </main>
+</div>
+
+</body>
+</html>

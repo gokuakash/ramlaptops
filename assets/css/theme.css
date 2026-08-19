@@ -1,0 +1,322 @@
+/* =========================================================
+   Ramlaptops — Shared theme CSS
+   Loaded after Tailwind (CDN) to provide custom tokens,
+   keyframes, and small UI fixes across all pages.
+   ========================================================= */
+
+:root {
+  --ram-navy: #0e1c2f;
+  --ram-blue: #007aff;
+}
+
+/* Material Symbols base (so we don't depend on per-page <style>) */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* ---------- Animations ---------- */
+@keyframes ram-fade-in-down {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes ram-slide-up {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes ram-fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes ram-pulse-soft {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.55; }
+}
+
+.animate-fade-in-down { animation: ram-fade-in-down 0.6s ease-out forwards; }
+.animate-slide-up     { animation: ram-slide-up     0.6s ease-out forwards; }
+.animate-fade-in      { animation: ram-fade-in      0.6s ease-out forwards; opacity: 0; }
+
+.animate-delay-100 { animation-delay: 100ms; }
+.animate-delay-200 { animation-delay: 200ms; }
+.animate-delay-300 { animation-delay: 300ms; }
+.animate-delay-400 { animation-delay: 400ms; }
+.animate-delay-500 { animation-delay: 500ms; }
+
+.ram-pulse { animation: ram-pulse-soft 1.8s ease-in-out infinite; }
+
+/* ---------- Small UX fixes ---------- */
+
+/* Active sidebar item should NOT be dimmed (mockup used opacity-80). */
+.ram-nav-active { opacity: 1 !important; }
+
+/* So short content pages still pin footer down. */
+body.ram-page { display: flex; flex-direction: column; min-height: 100vh; }
+body.ram-page > .ram-main { flex: 1 0 auto; }
+
+/* Form field reset for the navy focus ring used across landing + admin */
+.ram-input {
+  width: 100%;
+  height: 3rem;
+  background: #eff4ff; /* surface-container-low */
+  border: 1px solid rgba(197, 198, 205, 0.5);
+  border-radius: 0.5rem;
+  padding: 0 1rem;
+  color: #0b1c30;
+  transition: box-shadow .15s, border-color .15s;
+}
+.ram-input::placeholder { color: rgba(68, 71, 76, 0.55); }
+.ram-input:focus {
+  outline: none;
+  border-color: var(--ram-navy);
+  box-shadow: 0 0 0 1px var(--ram-navy);
+}
+
+/* Buttons */
+.ram-btn-primary {
+  background: var(--ram-navy);
+  color: #fff;
+}
+.ram-btn-primary:hover { background: #000; }
+
+/* Hide scrollbars on the admin sidebar but keep scroll. */
+.ram-scroll::-webkit-scrollbar { width: 6px; height: 6px; }
+.ram-scroll::-webkit-scrollbar-thumb { background: #c5c6cd; border-radius: 3px; }
+.ram-scroll::-webkit-scrollbar-track { background: transparent; }
+
+/* Subtle background grid used on login screen */
+.ram-grid-bg {
+  background-image:
+    linear-gradient(rgba(11,25,44,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11,25,44,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Print-safe: ensure links reveal nicely on focus for keyboard users */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--ram-blue);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* ---------- Image + card polish ---------- */
+
+/* Card image wrapper with zoom-on-hover + soft shine sweep */
+.ram-img-wrap { position: relative; overflow: hidden; }
+.ram-img-wrap img {
+  transition: transform .55s cubic-bezier(.2,.7,.2,1);
+  will-change: transform;
+}
+.ram-img-wrap:hover img { transform: scale(1.06); }
+
+/* Subtle shine that sweeps across on hover */
+.ram-img-wrap::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.35) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform .8s ease;
+  pointer-events: none;
+}
+.ram-img-wrap:hover::after { transform: translateX(120%); }
+
+/* Product images are PNG photos on white — drop the gray tile, let them sit on white */
+.ram-product-img {
+  background: #ffffff;
+  mix-blend-mode: multiply;
+  filter: drop-shadow(0 18px 24px rgba(11,25,44,.18));
+}
+
+/* Hero */
+.ram-hero-img {
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,.55)) brightness(1.02);
+}
+.ram-hero-glow {
+  background: radial-gradient(circle at 70% 40%, rgba(0,122,255,.35), transparent 55%);
+  filter: blur(60px);
+}
+
+/* Soft floating animation for hero product */
+@keyframes ram-float {
+  0%,100% { transform: translateY(0) }
+  50%     { transform: translateY(-14px) }
+}
+.ram-float { animation: ram-float 5.5s ease-in-out infinite; }
+
+/* Logo / partner marquee */
+@keyframes ram-marquee {
+  0%   { transform: translateX(0) }
+  100% { transform: translateX(-50%) }
+}
+.ram-marquee { animation: ram-marquee 28s linear infinite; }
+.ram-marquee:hover { animation-play-state: paused; }
+
+/* Reveal-on-scroll: starts hidden, .ram-in toggles it */
+.ram-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1);
+  will-change: opacity, transform;
+}
+.ram-reveal.ram-in { opacity: 1; transform: none; }
+
+/* Star rating row */
+.ram-stars { display: inline-flex; gap: 2px; color: #f59e0b; }
+.ram-stars .material-symbols-outlined { font-size: 16px; line-height: 1; }
+
+/* Subtle glass for cards */
+.ram-glass {
+  background: rgba(255,255,255,.7);
+  backdrop-filter: blur(10px) saturate(140%);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+}
+
+/* ---------- Storefront motion (index.html) ---------- */
+
+/* Smooth in-page scrolling */
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* Scroll-reveal base (JS adds inline transforms via motion) */
+.ram-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  filter: blur(4px);
+  will-change: opacity, transform, filter;
+}
+.ram-reveal.ram-in { opacity: 1; transform: none; filter: none; }
+
+/* Hero load-stagger children start hidden (JS animates them in) */
+.hero-stagger > * {
+  opacity: 0;
+  transform: translateY(24px);
+  filter: blur(6px);
+  will-change: opacity, transform, filter;
+}
+
+/* Preloader */
+.ram-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: #0e1c2f;
+  color: #fff;
+  will-change: transform;
+}
+.ram-preloader-bar {
+  width: 180px;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.15);
+  overflow: hidden;
+}
+.ram-preloader-bar > span {
+  display: block;
+  height: 100%;
+  width: 0%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #007aff, #5aa7ff);
+}
+
+/* Live dot used on hero badge / marquee separators */
+.ram-dot { width: 6px; height: 6px; border-radius: 999px; background: #007aff; }
+
+/* Parallax layers */
+.ram-parallax { will-change: transform; }
+
+/* Count-up stat numbers */
+.ram-stat-number { font-variant-numeric: tabular-nums; }
+
+/* Soft card lift on hover */
+.ram-lift { transition: transform .45s cubic-bezier(.2,.7,.2,1), box-shadow .45s cubic-bezier(.2,.7,.2,1); }
+.ram-lift:hover { transform: translateY(-6px); box-shadow: 0 24px 48px -20px rgba(11,25,44,.22); }
+
+/* Testimonial quote mark */
+.ram-quote-mark {
+  font-size: 4.5rem;
+  line-height: 0.6;
+  font-family: Georgia, serif;
+  color: #007aff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ram-reveal { opacity: 1 !important; transform: none !important; filter: none !important; }
+  .ram-parallax { transform: none !important; }
+  .ram-preloader { display: none !important; }
+  .hero-stagger > * { opacity: 1 !important; transform: none !important; filter: none !important; }
+}
+
+/* ---------- Premium type + micro-details ---------- */
+
+/* Display headline — tight tracking, heavy weight (MotionSites/Linear style) */
+.ram-display {
+  font-size: clamp(40px, 7.2vw, 72px);
+  line-height: 1.03;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+.ram-display-2 {
+  font-size: clamp(30px, 4.6vw, 46px);
+  line-height: 1.08;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+/* Gradient text accent */
+.ram-text-gradient {
+  background: linear-gradient(100deg, #5aa7ff 0%, #007aff 45%, #9ac8ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Spec chip on product cards */
+.ram-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #44474c;
+  background: #eff4ff;
+  border: 1px solid rgba(197, 198, 205, 0.4);
+  white-space: nowrap;
+}
+
+/* Marquee edge fade */
+.ram-marquee-mask {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+
+/* Kicker label */
+.ram-kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
